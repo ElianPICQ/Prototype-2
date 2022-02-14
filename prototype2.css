@@ -1,0 +1,419 @@
+/*
+	Sass Prototype 2
+*/
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 18px;
+}
+
+/* HEADER */
+header {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+}
+header h1 {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 1rem;
+  color: #ff4da6;
+}
+header #bonjsoir {
+  font-size: 6rem;
+  color: #fff;
+}
+header #text-intro {
+  color: #fff;
+}
+
+/*****************
+	MINI JEUX
+******************/
+#mini-jeux {
+  width: 100%;
+  height: 100vh;
+  background-color: green;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  /* ICONES */
+  /* JEUX */
+}
+#mini-jeux__icones {
+  width: 60%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border: 3px solid #00000090;
+}
+#mini-jeux__icones > div {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+  margin: 1rem;
+  cursor: pointer;
+}
+#mini-jeux__jeux {
+  position: relative;
+  width: 50%;
+  height: 50vh;
+  background-color: #33535a82;
+  border: 5px solid #00000090;
+}
+
+.mini-jeu {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: top;
+  width: 100%;
+  height: 100%;
+}
+
+/* Sliders pour les mini-jeux */
+.mini-jeux-hide {
+  transform: scaleX(0);
+  opacity: 0;
+  transition: 1s;
+}
+
+.mini-jeux-show {
+  transform: scaleX(1);
+  opacity: 1;
+  transition: 1s;
+}
+
+/* Boite Mini Jeux + SCORES */
+#mini-jeux-et-scores {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+#mini-jeux-et-scores .score-box {
+  width: 15%;
+  height: 75%;
+  background-color: blue;
+}
+
+/***********/
+/* Shifumi */
+/***********/
+#shifumi {
+  background-color: #1d5475;
+}
+
+#shifumi-box {
+  width: 100%;
+  height: 100%;
+  padding: 10px 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#shifumi-choice {
+  width: 80%;
+  height: 60%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#shifumi-choice > label {
+  width: 75px;
+  height: 75px;
+  position: relative;
+  display: inline-block;
+}
+
+/** Affichage des (pierre/feuille/ciseaux) cliquables **/
+#pierre, #ciseaux {
+  margin-top: auto;
+}
+
+#feuille {
+  margin-bottom: auto;
+}
+
+#shifumi-pierre-display, #shifumi-feuille-display, #shifumi-ciseaux-display {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  cursor: pointer;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.8);
+  transition: 0.1s;
+}
+
+#pierre__input, #feuille__input, #ciseaux__input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+#ciseaux__input:checked + #shifumi-ciseaux-display,
+#feuille__input:checked + #shifumi-feuille-display,
+#pierre__input:checked + #shifumi-pierre-display {
+  box-shadow: inset 0 0 8px 0 rgba(0, 0, 0, 0.8);
+  background-color: #6b92aa8a;
+  transition: 0.1s;
+}
+
+/* Affichage pierre cliquable */
+#shifumi-pierre-display {
+  background-image: url(img/pierre.png);
+}
+
+/* Affichage feuille cliquable */
+#shifumi-feuille-display {
+  background-image: url(img/feuille.png);
+  background-size: 60px;
+  background-repeat: no-repeat;
+}
+
+/* Affichage des ciseaux cliquable */
+#shifumi-ciseaux-display {
+  background-image: url(img/ciseaux.png);
+}
+
+/* Bouton d'envoi du shifumi */
+#shifumi-submit {
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: #1d5475;
+  background-color: #151515;
+  border-radius: 3px;
+  border: none;
+}
+#shifumi-submit:active {
+  box-shadow: inset 0 0 5px 0 black;
+}
+
+/* Affichage des choix */
+#shifumi-fight {
+  width: 70%;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.score-indication-box {
+  position: relative;
+  width: 75px;
+  height: 75px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+#user-choice, #my-choice {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-position: center;
+  background-size: cover;
+}
+
+#shifumi-results {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 125px;
+  height: 50px;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.score-indication {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+  font-size: xx-large;
+  font-weight: 800;
+  font-family: sans-serif;
+  opacity: 0.3;
+}
+
+#shifumi-results-display {
+  font-size: 1.2rem;
+}
+
+/**************************/
+/***** Infinite Sword *****/
+/**************************/
+#sword-container {
+  background-color: #213e44;
+}
+
+#fourreau {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#sword {
+  overflow-y: scroll;
+  width: min-content;
+  height: 100%;
+  padding-right: 50px;
+}
+
+#sword pre {
+  width: min-content;
+  margin: 0 auto;
+}
+
+.hide-sword {
+  display: none;
+}
+
+/* Affichage du nombre de scrolls sur Infinite Sword */
+#infinite-sword-count p {
+  font-size: 1.25rem;
+}
+
+/**************************/
+/***** Useless Button *****/
+/**************************/
+#useless-button {
+  background-color: #621111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#useless-button__btn {
+  display: inline-block;
+  height: min-content;
+  width: min-content;
+  min-width: 150px;
+  min-height: 120px;
+  padding: 10px 20px;
+  appearance: none;
+  border: 0;
+  outline: 0;
+  background-color: #17bfaf;
+  font-size: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px 5px rgba(0, 0, 0, 0.5);
+  color: #282d32;
+  cursor: pointer;
+  transition: all 0.5s;
+  transition-timing-function: cubic-bezier(0.2, 3, 0.4, 1);
+  user-select: none;
+}
+
+#useless-button__btn:hover {
+  transform: scale(1.1, 1.1);
+}
+
+#useless-button__btn:active {
+  transform: scale(0.95, 0.95);
+}
+
+/*********************/
+/* RGBA / HSL EDITOR */
+/*********************/
+#color-editor {
+  background-color: #FFF;
+  display: flex;
+  flex-direction: column;
+}
+#color-editor #color-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+#color-editor #color-container .color-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: start;
+}
+#color-editor #color-container .color-canvas .color-input {
+  position: relative;
+}
+#color-editor #color-selector-container {
+  position: absolute;
+  bottom: 0;
+  height: 15%;
+  width: 100%;
+  display: flex;
+}
+#color-editor #color-selector-container div {
+  height: 100%;
+  width: 50%;
+  z-index: 4;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+#rgb-canvas {
+  background-color: white;
+  position: relative;
+}
+#rgb-canvas .color-input:nth-child(1)::before {
+  content: "R";
+}
+#rgb-canvas .color-input:nth-child(2)::before {
+  content: "G";
+}
+#rgb-canvas .color-input:nth-child(3)::before {
+  content: "B";
+}
+#rgb-canvas .color-input::before {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -25px;
+}
+#rgb-canvas #rgb-value {
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  transform: translateY(-50%);
+  font-size: 1.25rem;
+  background-color: #FFFFFF4D;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+/*# sourceMappingURL=prototype2.css.map */
