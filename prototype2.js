@@ -21,7 +21,7 @@ const displayShifumiScore = document.getElementById('shifumi-score');
 const displayRgbScore = document.getElementById("rgb-score");
 
 //Boite ciblée des scores à incrémenter
-//const InfiniteSwordCount = document.getElementById('infinite-sword-count__nb');
+const InfiniteSwordCount = document.getElementById('infinite-sword-count__nb');
 
 //Boite de la valeur RGB dans la balise de score
 
@@ -42,15 +42,11 @@ Array.prototype.forEach.call(miniJeuxIcones, function(icone) {
   icone.addEventListener("click", function() {
 
     //On affiche les scores si nécéssaire (et pas déjà fait)
-/*    if (displayNbClics.classList.contains("hide-bloc") && clics > 0)
-      displayNbClics.classList.replace("hide-bloc", "show-bloc");
-    if (displayShifumiScore.classList.contains("hide-bloc") && (userScore > 0 || botScore > 0))
-      displayShifumiScore.classList.replace("hide-bloc", "show-bloc");
-    if (displayInfiniteSwordCount.classList.contains("hide-bloc") && bladeCount > 0)
-      displayInfiniteSwordCount.classList.replace("hide-bloc", "show-bloc");
-    if (displayRgbScore.classList.contains("hide-bloc") && showRGB == true)
-      displayRgbScore.classList.replace("hide-bloc", "show-bloc");
-*/
+    
+    
+    
+    
+
 
     //On ouvre ou ferme les mini-jeux
     switch(icone.id) {
@@ -65,7 +61,6 @@ Array.prototype.forEach.call(miniJeuxIcones, function(icone) {
 
       case 'infinite-sword-icone':
         if (swordContainer.classList.contains("mini-jeux-show")) {
- //         InfiniteSwordCount.innerHTML = bladeCount;
           swordContainer.classList.replace("mini-jeux-show", "mini-jeux-hide");
         }
         else if (swordContainer.classList.contains("mini-jeux-hide")) {
@@ -103,7 +98,7 @@ Array.prototype.forEach.call(miniJeuxIcones, function(icone) {
 
 var userScore = 0;
 var botScore = 0;
-//const displayUserScore = document.getElementById('display-user-score');
+const displayUserScore = document.getElementById('display-user-score');
 const displayMyScore = document.getElementById('display-my-score');
 const resultatMancheShifumi = document.getElementById('shifumi-results-display');
 const displayUserChoice = document.getElementById('user-choice');
@@ -184,9 +179,11 @@ document.getElementById('shifumi-box').addEventListener('submit', function(event
         break;
     }
   }
-//  displayUserScore.innerHTML = userScore;
-//  displayMyScore.innerHTML = botScore;
+  displayUserScore.innerHTML = userScore;
+  displayMyScore.innerHTML = botScore;
 
+  if (displayShifumiScore.classList.contains("hide-bloc") && (userScore > 0 || botScore > 0))
+      displayShifumiScore.classList.replace("hide-bloc", "show-bloc");
 });
 
 
@@ -241,6 +238,11 @@ function  addBlade(entry) {
     sword.appendChild(clonedTip);
     clonedTip.classList.remove("hide-sword");
   }
+
+  InfiniteSwordCount.innerHTML = bladeCount;
+
+  if (displayInfiniteSwordCount.classList.contains("hide-bloc") && bladeCount > 0)
+      displayInfiniteSwordCount.classList.replace("hide-bloc", "show-bloc");
 }
 
 
@@ -274,12 +276,15 @@ var   txtBtn = [
 
 uselessBtn.addEventListener("mouseup", function(e) {
   clics++;
-//  nbClics.innerHTML = clics;
+  nbClics.innerHTML = clics;
 
   if(txtIndex < txtBtn.length) {
     uselessBtn.innerHTML = txtBtn[txtIndex];
     txtIndex++;
   }
+
+  if (displayNbClics.classList.contains("hide-bloc") && clics > 0)
+      displayNbClics.classList.replace("hide-bloc", "show-bloc");
 });
 
 
@@ -322,8 +327,11 @@ function  changeR(value) {
 
   rgbDisplayValue.innerHTML = rgbCanvas.style.backgroundColor;
 
-//  displayRgbScore.style.backgroundColor = rgbCanvas.style.backgroundColor;
-//  rgbScoreValue.innerHTML = rgbCanvas.style.backgroundColor;
+  displayRgbScore.style.backgroundColor = rgbCanvas.style.backgroundColor;
+  rgbScoreValue.innerHTML = rgbCanvas.style.backgroundColor;
+
+  if (displayRgbScore.classList.contains("hide-bloc") && showRGB == true)
+      displayRgbScore.classList.replace("hide-bloc", "show-bloc");
 }
 
 function  changeG(value) {
@@ -347,8 +355,11 @@ function  changeG(value) {
 
   rgbDisplayValue.innerHTML = rgbCanvas.style.backgroundColor;
 
-//  displayRgbScore.style.backgroundColor = rgbCanvas.style.backgroundColor;
-//  rgbScoreValue.innerHTML = rgbCanvas.style.backgroundColor;
+  displayRgbScore.style.backgroundColor = rgbCanvas.style.backgroundColor;
+  rgbScoreValue.innerHTML = rgbCanvas.style.backgroundColor;
+
+  if (displayRgbScore.classList.contains("hide-bloc") && showRGB == true)
+      displayRgbScore.classList.replace("hide-bloc", "show-bloc");
 }
 
 function  changeB(value) {
@@ -372,6 +383,9 @@ function  changeB(value) {
 
   rgbDisplayValue.innerHTML = rgbCanvas.style.backgroundColor;
 
-//  displayRgbScore.style.backgroundColor = rgbCanvas.style.backgroundColor;
-//  rgbScoreValue.innerHTML = rgbCanvas.style.backgroundColor;
+  displayRgbScore.style.backgroundColor = rgbCanvas.style.backgroundColor;
+  rgbScoreValue.innerHTML = rgbCanvas.style.backgroundColor;
+
+  if (displayRgbScore.classList.contains("hide-bloc") && showRGB == true)
+      displayRgbScore.classList.replace("hide-bloc", "show-bloc");
 }

@@ -11,10 +11,10 @@
 </head>
 <body>
 	<header>
-		<h1>EPIK</h1>
+		<h1><a href="https://elianpicq.github.io/Prototype-2/">EPIK</a></h1>
 		<span id="bonjsoir">Bonjour !</span>
 
-		<div id="text-intro"><p>Je me présente, je m'appelle Elian. Bienvenue dans mon antre, où je teste ce qui me passe par la tête.<br />
+		<div id="text-intro"><p>Salut ! Moi c'est Elian. Bienvenue dans mon antre, où je teste ce qui me passe par la tête.<br />
 		Bonne visite ?</p></div>
 	</header>
 
@@ -33,7 +33,15 @@
 			<div id="mini-jeux-et-scores">
 
 				<div id="score1" class="score-box">
-					
+					<div id="shifumi-score" class="hide-bloc mini-jeu-score">
+						<div id="user-score"><span class="score-indication">TOI</span><span id="display-user-score"></span></div>
+						<span>SCORES SHIFUMI</span>
+						<div id="my-score"><span class="score-indication">BOT</span><span id="display-my-score"></span></div>
+					</div>
+
+					<div id="rgb-score" class="hide-bloc mini-jeu-score">
+						<span id="rgb-score-value"></span>
+					</div>
 				</div>
 
 				<div id="mini-jeux__jeux">
@@ -185,8 +193,14 @@ Bravo \ | /
 					</div>
 				</div>	<!-- Fin des mini jeux -->
 
-				<div id="score1" class="score-box">
-					
+				<div id="score2" class="score-box">
+					<div id="infinite-sword-count" class="hide-bloc mini-jeu-score">
+						<p><span id="infinite-sword-count__nb"></span> Morceaux de lame ajouté.</p>
+					</div>
+
+					<div id="useless-clics" class="hide-bloc mini-jeu-score">
+						<p>ça nous fait <span id="useless-clics__nb"></span> clics !</p>
+					</div>
 				</div>
 			</div>
 

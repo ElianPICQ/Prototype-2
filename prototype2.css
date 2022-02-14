@@ -1,6 +1,12 @@
 /*
 	Sass Prototype 2
 */
+:root {
+  --clr-white: #fff;
+  --clr-pink: #ff4da6;
+  --clr-pink-dark: #e60073;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -27,13 +33,24 @@ header h1 {
   top: 1rem;
   left: 1rem;
   font-size: 1rem;
-  color: #ff4da6;
+  text-decoration: underline var(--clr-white);
+  text-shadow: 0 0 10px var(--clr-white), 0 0 20px var(--clr-white), 0 0 30px var(--clr-pink-dark), 0 0 40px var(--clr-pink-dark), 0 0 50px var(--clr-pink-dark), 0 0 60px var(--clr-pink-dark), 0 0 70px var(--clr-pink-dark);
+  color: var(--clr-white);
+}
+header h1 a:visited {
+  text-decoration: underline var(--clr-white);
+  text-shadow: 0 0 10px var(--clr-white), 0 0 20px var(--clr-white), 0 0 30px var(--clr-pink-dark), 0 0 40px var(--clr-pink-dark), 0 0 50px var(--clr-pink-dark), 0 0 60px var(--clr-pink-dark), 0 0 70px var(--clr-pink-dark);
+  color: var(--clr-white);
 }
 header #bonjsoir {
   font-size: 6rem;
   color: #fff;
 }
 header #text-intro {
+  position: absolute;
+  bottom: 2rem;
+  text-align: center;
+  line-height: 2rem;
   color: #fff;
 }
 
@@ -105,9 +122,63 @@ header #text-intro {
   justify-content: space-between;
 }
 #mini-jeux-et-scores .score-box {
-  width: 15%;
+  width: 20%;
   height: 75%;
   background-color: blue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+/**********
+ * SCORES
+ **********/
+#infinite-sword-count p, #useless-clics p {
+  font-size: 1.25rem;
+}
+
+/* Shifummi */
+#shifumi-score {
+  width: 75%;
+  height: 70px;
+  display: flex;
+  justify-content: space-around;
+}
+#shifumi-score span {
+  text-align: center;
+}
+
+#user-score, #my-score {
+  width: 70px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: xx-large;
+  font-weight: 800;
+  font-family: sans-serif;
+}
+
+/* RGB Editor */
+#rgb-score {
+  height: 70px;
+  width: 75%;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Classes CSS pour afficher/cacher des blocs */
+.hide-bloc {
+  opacity: 0;
+}
+
+.show-bloc {
+  opacity: 1;
 }
 
 /***********/
