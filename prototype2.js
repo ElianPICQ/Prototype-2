@@ -41,12 +41,6 @@ Array.prototype.forEach.call(miniJeuxIcones, function(icone) {
   //On vérifie, 1 par 1, quelle élément (class="mini-jeu") est cliqué
   icone.addEventListener("click", function() {
 
-    //On affiche les scores si nécéssaire (et pas déjà fait)
-    
-    
-    
-    
-
 
     //On ouvre ou ferme les mini-jeux
     switch(icone.id) {
