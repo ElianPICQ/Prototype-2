@@ -29,6 +29,16 @@ const rgbScoreValue = document.getElementById("rgb-score-value");
 
 var showRGB = false;
 
+/************/
+/*  SCROLL  */
+/************/
+
+
+
+/***************************************/
+/*  OUVERTURE/FERMETURE DES MINI JEUX  */
+/***************************************/
+
 function  hide_mini_jeux() {
   Array.prototype.forEach.call(miniJeux, function(item) {
     if (item.classList.contains("mini-jeux-show")) {

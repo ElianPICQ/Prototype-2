@@ -10,17 +10,26 @@
 	<link rel="stylesheet" type="text/css" href="prototype2.css" />
 </head>
 <body>
-	<header>
-		<h1><a href="https://elianpicq.github.io/Prototype-2/">EPIK</a></h1>
+	<div id="theTop"></div>
+	<header class="screen-element">
+		<h1><a href="#mini-jeux">EPIK</a></h1>
 		<span id="bonjsoir">Bonjour !</span>
 
 		<div id="text-intro"><p>Salut ! Moi c'est Elian. Bienvenue dans mon antre, où je teste ce qui me passe par la tête.<br />
 		Bonne visite ?</p></div>
+
+		<nav>
+			<a href="#theTop" class="nav-button"></a>
+			<a href="#mini-jeux" class="nav-button"></a>
+		</nav>
+
+		<span id="nav-caption">Autre chose ?</span>
+
 	</header>
 
 	<main>
 
-		<section id="mini-jeux">
+		<section id="mini-jeux" class="screen-element">
 			<h3>Mini Jeu ?</h3>
 
 			<div id="mini-jeux__icones">
@@ -191,7 +200,9 @@ Bravo \ | /
 							</div>
 						</div>
 					</div>
-				</div>	<!-- Fin des mini jeux -->
+				</div>
+
+				<!-- Fin des mini jeux -->
 
 				<div id="score2" class="score-box">
 					<div id="infinite-sword-count" class="hide-bloc mini-jeu-score">

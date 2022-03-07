@@ -15,12 +15,17 @@
 
 html {
   font-size: 18px;
+  scroll-behavior: smooth;
+  overflow: hidden;
+}
+
+.screen-element {
+  width: 100%;
+  height: 100vh;
 }
 
 /* HEADER */
 header {
-  width: 100%;
-  height: 100vh;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -54,12 +59,45 @@ header #text-intro {
   color: #fff;
 }
 
+/* Barre de nav */
+nav {
+  position: fixed;
+  top: 3rem;
+  right: 4.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 4rem;
+  height: 10rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+}
+nav .nav-button {
+  width: 20px;
+  height: 20px;
+  display: block;
+  transform: rotate(45deg);
+}
+nav .nav-button:nth-child(1) {
+  background-color: #000;
+}
+nav .nav-button:nth-child(2) {
+  background: linear-gradient(-35deg, #FF008E, #BD27D2, #591eb0, #09144A);
+}
+
+#nav-caption {
+  position: absolute;
+  top: 4rem;
+  right: 2.5rem;
+  color: white;
+  font-size: 1.3rem;
+}
+
 /*****************
 	MINI JEUX
 ******************/
 #mini-jeux {
-  width: 100%;
-  height: 100vh;
   background: linear-gradient(-35deg, #FF008E, #BD27D2, #591eb0, #09144A);
   display: flex;
   flex-direction: column;
@@ -472,6 +510,10 @@ header #text-intro {
 #rgb-canvas {
   background-color: white;
   position: relative;
+  border-radius: 4px;
+}
+#rgb-canvas .color-input {
+  margin-left: 15px;
 }
 #rgb-canvas .color-input:nth-child(1)::before {
   content: "R";
