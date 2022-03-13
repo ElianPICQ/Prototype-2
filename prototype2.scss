@@ -4,8 +4,8 @@
 
 :root {
 	--clr-white: #fff;
-	--clr-pink: #ff4da6;
-	--clr-pink-dark: #e60073;
+	--clr-pink: #3bc9dc;
+	--clr-pink-dark: #2f7781;
 }
 
 *, *::before, *::after {
@@ -17,7 +17,7 @@
 html {
 	font-size: 18px;
 	scroll-behavior: smooth;
-	overflow: hidden;
+/*	overflow: hidden;*/
 }
 
 .screen-element {
@@ -54,6 +54,16 @@ header {
 		}
 	}
 
+	/* logo GitHub */
+
+#github-logo {
+	position: absolute;
+	top: 3.5rem; left: 1rem;
+	width: 2rem; height: 2rem;
+	background-image: url(img/ghub.png);
+	background-size: contain;
+}
+
 	#bonjsoir {
 		font-size: 6rem;
 		color: #fff;
@@ -82,6 +92,7 @@ nav {
 	width: 4rem; height: 10rem;
 	background-color: rgba(0, 0, 0, 0.3);
 	border-radius: 20px;
+	border: 2px solid white;
 
 	.nav-button {
 		width: 20px; height: 20px;
@@ -95,14 +106,21 @@ nav {
 		&:nth-child(2) {
 			background: linear-gradient(-35deg, #FF008E, #BD27D2, #591eb0, #09144A);
 		}
+		&:nth-child(3) {
+			background-color: #fff;
+		}
 	}
 }
 
 #nav-caption {
 	position: absolute;
-	top: 4rem; right: 2.5rem;
+	top: 1.5rem; right: 2.9rem;
+	background-color: #000;
 	color: white;
 	font-size: 1.3rem;
+	text-align: center;
+	padding: 1rem 0;
+	border-bottom: 2px solid white;
 }
 
 /*****************
@@ -616,4 +634,60 @@ nav {
 
 		padding: 5px;
 	}
+}
+
+
+  /****************************/
+ /* L'endroit où tu dessines */
+/****************************/
+
+#draw-canvas {
+	display: flex;
+
+	#canvas-toolbar {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		height: 100%; width: 100px;
+		background-color: #1a1a1a;
+		color: #fff;
+		padding-top: 13%;
+
+		h3 {
+			position: relative;
+			top: -25%;
+			margin: 25px 0;
+			background: -webkit-linear-gradient(90deg, #91e4e4, #86a8e7, #7f7fd5);
+			background: linear-gradient(90deg, #91e4e4, #86a8e7, #7f7fd5);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+		}
+
+		label {
+			border-top: 3px solid white;
+			text-align:  center;
+			min-width: 75%; max-width: 90%;
+			padding-top: 10px;
+		}
+
+		#clear-canvas {
+			position: relative;
+			top: 25%;
+			padding: 5px 15px;
+			background-color: #2b776c;
+			color: white;
+			border: none;
+			border-radius: 10px;
+		}
+	}
+}
+
+#canvas-toolbar * {
+	margin: 10px 0;
+}
+
+#line-width {
+	width: 50px;
 }

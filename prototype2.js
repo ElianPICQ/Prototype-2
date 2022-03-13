@@ -29,11 +29,21 @@ const rgbScoreValue = document.getElementById("rgb-score-value");
 
 var showRGB = false;
 
-/************/
-/*  SCROLL  */
-/************/
+/******************************/
+/*  SCROLL (la bordure tmtc)  */
+/******************************/
 
+const navBar = document.getElementById("nav-bar")
+const navButtons = document.getElementsByClassName("nav-button");
 
+Array.prototype.forEach.call(navButtons, function(item) {
+  item.addEventListener("click", function() {
+    if (item.id == "top-button")
+      navBar.style.borderColor = "white";
+    else
+      navBar.style.borderColor = "transparent";
+  })
+});
 
 /***************************************/
 /*  OUVERTURE/FERMETURE DES MINI JEUX  */
@@ -48,7 +58,7 @@ function  hide_mini_jeux() {
 }
 
 Array.prototype.forEach.call(miniJeuxIcones, function(icone) {
-  //On vérifie, 1 par 1, quelle élément (class="mini-jeu") est cliqué
+  //On vérifie, 1 par 1, quel élément (class="mini-jeu") est cliqué
   icone.addEventListener("click", function() {
 
 
@@ -393,3 +403,74 @@ function  changeB(value) {
   if (displayRgbScore.classList.contains("hide-bloc") && showRGB == true)
       displayRgbScore.classList.replace("hide-bloc", "show-bloc");
 }
+
+
+/***************************/
+/* Le Canvas pour dessiner */
+/***************************/
+
+const canvas = document.getElementById("canvas-painting");
+const toolbar = document.getElementById("canvas-toolbar");
+
+// Contexte. Ou ce qui va dessiner
+const ctx = canvas.getContext("2d");
+
+// On definit la taille du canvas en JS
+// car un width: 100% en CSS a un effet de zoom
+const canvasOffsetX = canvas.offsetLeft;
+
+window.addEventListener("load", ep_resizeCanvas);
+window.addEventListener("resize", ep_resizeCanvas);
+
+function ep_resizeCanvas() {
+canvas.width = window.innerWidth - canvasOffsetX;
+canvas.height = window.innerHeight;
+}
+
+let isPainting = false;
+let lineWidth = 5;
+
+// Boutons Toolbar
+
+toolbar.addEventListener("click", e => {
+  if (e.target.id === "clear-canvas")
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+});
+
+toolbar.addEventListener("change", e => {
+  if (e.target.id === "couleur")
+    ctx.strokeStyle = e.target.value;
+
+  if (e.target.id === "line-width")
+    lineWidth = e.target.value;
+});
+
+// Interactions canvas (dessiner quoi)
+
+function  draw(e) {
+  if (!isPainting)
+    return;
+
+  ctx.lineWidth = lineWidth;
+  ctx.lineCap = "round";
+  //Sans la soustraction, le trait serait 100px vers la droite (toolbar)
+  ctx.lineTo(e.clientX - canvasOffsetX + 20, e.clientY);
+  ctx.stroke();
+}
+
+canvas.addEventListener("mousedown", (e) => {
+  isPainting = true;
+  draw(e);
+});
+
+canvas.addEventListener("mouseup", (e) => {
+  isPainting = false;
+  //Nécessaire pour que le dessin reste affiché ?
+  ctx.stroke() 
+  //Sans ça, dessiner un 2e trait aura pour conséquence
+  //de lier la fin du 1er trait avec le début du 2e
+  ctx.beginPath() 
+});
+
+canvas.addEventListener("mousemove", draw);
+

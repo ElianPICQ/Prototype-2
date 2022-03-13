@@ -1,10 +1,11 @@
+@charset "UTF-8";
 /*
 	Sass Prototype 2
 */
 :root {
   --clr-white: #fff;
-  --clr-pink: #ff4da6;
-  --clr-pink-dark: #e60073;
+  --clr-pink: #3bc9dc;
+  --clr-pink-dark: #2f7781;
 }
 
 *, *::before, *::after {
@@ -16,7 +17,7 @@
 html {
   font-size: 18px;
   scroll-behavior: smooth;
-  overflow: hidden;
+  /*	overflow: hidden;*/
 }
 
 .screen-element {
@@ -32,6 +33,7 @@ header {
   align-items: center;
   justify-content: center;
   background-color: #000;
+  /* logo GitHub */
 }
 header h1 {
   position: absolute;
@@ -46,6 +48,15 @@ header h1 a:visited {
   text-decoration: underline var(--clr-white);
   text-shadow: 0 0 10px var(--clr-white), 0 0 20px var(--clr-white), 0 0 30px var(--clr-pink-dark), 0 0 40px var(--clr-pink-dark), 0 0 50px var(--clr-pink-dark), 0 0 60px var(--clr-pink-dark), 0 0 70px var(--clr-pink-dark);
   color: var(--clr-white);
+}
+header #github-logo {
+  position: absolute;
+  top: 3.5rem;
+  left: 1rem;
+  width: 2rem;
+  height: 2rem;
+  background-image: url(img/ghub.png);
+  background-size: contain;
 }
 header #bonjsoir {
   font-size: 6rem;
@@ -72,6 +83,7 @@ nav {
   height: 10rem;
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 20px;
+  border: 2px solid white;
 }
 nav .nav-button {
   width: 20px;
@@ -85,13 +97,20 @@ nav .nav-button:nth-child(1) {
 nav .nav-button:nth-child(2) {
   background: linear-gradient(-35deg, #FF008E, #BD27D2, #591eb0, #09144A);
 }
+nav .nav-button:nth-child(3) {
+  background-color: #fff;
+}
 
 #nav-caption {
   position: absolute;
-  top: 4rem;
-  right: 2.5rem;
+  top: 1.5rem;
+  right: 2.9rem;
+  background-color: #000;
   color: white;
   font-size: 1.3rem;
+  text-align: center;
+  padding: 1rem 0;
+  border-bottom: 2px solid white;
 }
 
 /*****************
@@ -539,6 +558,57 @@ nav .nav-button:nth-child(2) {
   background-color: #FFFFFF4D;
   border-radius: 5px;
   padding: 5px;
+}
+
+/****************************/
+/* L'endroit où tu dessines */
+/****************************/
+#draw-canvas {
+  display: flex;
+}
+#draw-canvas #canvas-toolbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100px;
+  background-color: #1a1a1a;
+  color: #fff;
+  padding-top: 13%;
+}
+#draw-canvas #canvas-toolbar h3 {
+  position: relative;
+  top: -25%;
+  margin: 25px 0;
+  background: -webkit-linear-gradient(90deg, #91e4e4, #86a8e7, #7f7fd5);
+  background: linear-gradient(90deg, #91e4e4, #86a8e7, #7f7fd5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+#draw-canvas #canvas-toolbar label {
+  border-top: 3px solid white;
+  text-align: center;
+  min-width: 75%;
+  max-width: 90%;
+  padding-top: 10px;
+}
+#draw-canvas #canvas-toolbar #clear-canvas {
+  position: relative;
+  top: 25%;
+  padding: 5px 15px;
+  background-color: #2b776c;
+  color: white;
+  border: none;
+  border-radius: 10px;
+}
+
+#canvas-toolbar * {
+  margin: 10px 0;
+}
+
+#line-width {
+  width: 50px;
 }
 
 /*# sourceMappingURL=prototype2.css.map */

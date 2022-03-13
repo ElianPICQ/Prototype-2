@@ -13,17 +13,19 @@
 	<div id="theTop"></div>
 	<header class="screen-element">
 		<h1><a href="#mini-jeux">EPIK</a></h1>
+		<a id="github-logo" href="https://github.com/ElianPICQ" target="_blank"></a>
 		<span id="bonjsoir">Bonjour !</span>
 
 		<div id="text-intro"><p>Salut ! Moi c'est Elian. Bienvenue dans mon antre, où je teste ce qui me passe par la tête.<br />
 		Bonne visite ?</p></div>
 
-		<nav>
-			<a href="#theTop" class="nav-button"></a>
+		<nav id="nav-bar">
+			<a href="#theTop" class="nav-button" id="top-button"></a>
 			<a href="#mini-jeux" class="nav-button"></a>
+			<a href="#draw-canvas" class="nav-button"></a>
 		</nav>
 
-		<span id="nav-caption">Autre chose ?</span>
+		<span id="nav-caption">Autre chose ?<br />Clique</span>
 
 	</header>
 
@@ -168,59 +170,75 @@ Bravo \ | /
   bien la pointe
 
 </pre>
+								</div>
+							</div>
+						</div>
+
+						<!-- USELESS BUTTON -->
+
+						<div id="useless-button" class="mini-jeu mini-jeux-hide">
+								<button id="useless-button__btn">Salut toi</button>
+						</div>
+
+
+						<!-- RGB COLOR EDITOR -->
+
+						<div id="color-editor" class="mini-jeu mini-jeux-hide">
+							<div id="color-container">
+
+								<!-- RGB -->
+								<div id="rgb-canvas" class="color-canvas show-canvas">
+									<span class="color-input">
+										<input type="range" id="r-slider" name="r-slider" min="0" max="255" value="255" onChange="changeR(this.value)" onInput="changeR(this.value)" />
+									</span>
+									<span class="color-input">
+										<input type="range" id="g-slider" name="g-slider" min="0" max="255" value="255" onChange="changeG(this.value)" onInput="changeG(this.value)" />
+									</span>
+									<span class="color-input">
+										<input type="range" id="b-slider" name="b-slider" min="0" max="255" value="255" onChange="changeB(this.value)" onInput="changeB(this.value)" />
+									</span>
+									<span id="rgb-value"></span>
+
+								</div>
 							</div>
 						</div>
 					</div>
 
-					<!-- USELESS BUTTON -->
+					<!-- Fin des mini jeux -->
 
-					<div id="useless-button" class="mini-jeu mini-jeux-hide">
-							<button id="useless-button__btn">Salut toi</button>
-					</div>
+					<div id="score2" class="score-box">
+						<div id="infinite-sword-count" class="hide-bloc mini-jeu-score">
+							<p><span id="infinite-sword-count__nb"></span> Morceaux de lame ajouté.</p>
+						</div>
 
-
-					<!-- RGB COLOR EDITOR -->
-
-					<div id="color-editor" class="mini-jeu mini-jeux-hide">
-						<div id="color-container">
-
-							<!-- RGB -->
-							<div id="rgb-canvas" class="color-canvas show-canvas">
-								<span class="color-input">
-									<input type="range" id="r-slider" name="r-slider" min="0" max="255" value="255" onChange="changeR(this.value)" onInput="changeR(this.value)" />
-								</span>
-								<span class="color-input">
-									<input type="range" id="g-slider" name="g-slider" min="0" max="255" value="255" onChange="changeG(this.value)" onInput="changeG(this.value)" />
-								</span>
-								<span class="color-input">
-									<input type="range" id="b-slider" name="b-slider" min="0" max="255" value="255" onChange="changeB(this.value)" onInput="changeB(this.value)" />
-								</span>
-								<span id="rgb-value"></span>
-
-							</div>
+						<div id="useless-clics" class="hide-bloc mini-jeu-score">
+							<p>ça nous fait <span id="useless-clics__nb"></span> clics !</p>
 						</div>
 					</div>
 				</div>
+		</section>
 
-				<!-- Fin des mini jeux -->
+	<!-- Toile Pour dessiner -->
 
-				<div id="score2" class="score-box">
-					<div id="infinite-sword-count" class="hide-bloc mini-jeu-score">
-						<p><span id="infinite-sword-count__nb"></span> Morceaux de lame ajouté.</p>
-					</div>
+		<section id="draw-canvas" class="screen-element">
+			<div id="canvas-toolbar">
+				<h3>Dessine</h3>
+				<label for="couleur">Couleur</label>
+				<input id="couleur" name="couleur" type="color" />
 
-					<div id="useless-clics" class="hide-bloc mini-jeu-score">
-						<p>ça nous fait <span id="useless-clics__nb"></span> clics !</p>
-					</div>
-				</div>
+				<label for="line-width">Epaisseur</label>
+				<input id="line-width" name="line-width" type="number" value="5" min="1" max="1000" />
+
+				<button id="clear-canvas">Effacer</button>
 			</div>
 
-
+			<div>
+				<canvas id="canvas-painting"></canvas>
+			</div>
 		</section>
 	</main>
 
 	<footer>
-		
 	</footer>
 
 	<script src="prototype2.js"></script>
