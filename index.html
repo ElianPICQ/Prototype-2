@@ -12,7 +12,7 @@
 <body>
 	<div id="theTop"></div>
 	<header class="screen-element">
-		<h1><a href="#mini-jeux">EPIK</a></h1>
+		<h1><a href="https://elianpicq.github.io/Prototype-2/" alt="lien github pages">EPIK</a></h1>
 		<a id="github-logo" href="https://github.com/ElianPICQ" target="_blank"></a>
 		<span id="bonjsoir">Bonjour !</span>
 
@@ -21,8 +21,8 @@
 
 		<nav id="nav-bar">
 			<a href="#theTop" class="nav-button" id="top-button"></a>
-			<a href="#mini-jeux" class="nav-button"></a>
-			<a href="#draw-canvas" class="nav-button"></a>
+			<a href="#mini-jeux" class="nav-button" id="mini-jeux-ancre"></a>
+			<a href="#draw-canvas" class="nav-button" id="draw-canvas-ancre"></a>
 		</nav>
 
 		<span id="nav-caption">Autre chose ?<br />Clique.</span>
@@ -37,10 +37,13 @@
 					<h3>Mini Jeu ?</h3>
 
 					<div id="mini-jeux__icones">
-						<div id="shifumi-icone" class="icone">pierre</div>
-						<div id="infinite-sword-icone" class="icone">épée</div>
-						<div id="useless-button-icone" class="icone">bouton</div>
-						<div id="color-editor-icone" class="icone">color editor</div>
+						<div id="shifumi-icone" class="icone"><img src="img/pierre.png" alt="Shifumi" width="70px" height="70px" /></div>
+
+						<div id="infinite-sword-icone" class="icone"><img src="img/icone_infinite_sword.png" alt="Shifumi" width="45px" height="45px" /></div>
+
+						<div id="useless-button-icone" class="icone"><div id="useless-button-icone__icone"><span>Salut</span></div></div>
+
+						<div id="color-editor-icone" class="icone"><img src="img/icone_rgb_editor.png" alt="rgb editor" width="55px" height="55px" /></div>
 					</div>
 
 
@@ -52,7 +55,7 @@
 						</div>
 
 						<div id="infinite-sword-count" class="hide-bloc mini-jeu-score">
-							<p><span id="infinite-sword-count__nb"></span> Morceaux de lame ajouté.</p>
+							<p><span id="infinite-sword-count__nb"></span> Morceaux de lame <span id="infinite-sword-count__addword">ajouté</span>.</p>
 						</div>
 
 						<div id="useless-clics" class="hide-bloc mini-jeu-score">
@@ -68,10 +71,12 @@
 
 				<div id="mini-jeux__jeux">
 
+					<!-- SHIFUMI -->
 					<div id="shifumi" class="mini-jeu mini-jeux-hide">
 						<form id="shifumi-box" action="" method="get">
 							<h3 id="shifumi-title">Shifumi</h3>
 
+							<!-- Affichage des choix des joueurs et du résultat -->
 							<div id="shifumi-fight">
 								<div class="score-indication-box"><span id="user-choice"></span><span class="score-indication">TOI</span></div>
 
@@ -80,6 +85,7 @@
 								<div class="score-indication-box"><span id="my-choice"></span><span class="score-indication">BOT</span></div>
 							</div>
 
+							<!-- CHOIX DU SHIFUMI -->
 							<div id="shifumi-choice">
 								<label id="pierre">
 									<input type="radio" id="pierre__input" name="shifumi-value" value="pierre" />

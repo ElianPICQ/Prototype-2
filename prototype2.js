@@ -32,18 +32,20 @@ var showRGB = false;
 /******************************/
 /*  SCROLL (la bordure tmtc)  */
 /******************************/
-/*
+
 const navBar = document.getElementById("nav-bar")
 const navButtons = document.getElementsByClassName("nav-button");
 
 Array.prototype.forEach.call(navButtons, function(item) {
   item.addEventListener("click", function() {
-    if (item.id == "top-button")
-      navBar.style.borderColor = "white";
-    else
-      navBar.style.borderColor = "transparent";
+    if (item.id === "top-button")
+      navBar.style.borderColor = "#fff";
+    else if (item.id === "mini-jeux-ancre")
+      navBar.style.borderColor = "#000";
+    else if (item.id === "draw-canvas-ancre")
+      navBar.style.borderColor = "transparent"
   })
-});*/
+});
 
 /************/
 /* BONJSOIR */
@@ -225,6 +227,8 @@ const blade = document.getElementById('sword__blade');
 const tip = document.getElementById('sword__tip');
 var toTheTip = 1001; // Il faut ajouter 1000 lames pour arriver au bout
 var bladeCount = 0;
+var plurielInfiniteSword = document.getElementById("infinite-sword-count__addword");
+var boolPlurielInfiniteSword = false;
 
 /* On créé l'observer de nom "observer" */
 
@@ -252,6 +256,9 @@ function  addBlade(entry) {
 
   if (toTheTip > 0) {
     bladeCount++;
+    //On met un 's' à "ajouté" à partir de 2 morceaux de lames
+    if (boolPlurielInfiniteSword === false && bladeCount > 1)
+      plurielInfiniteSword.innerHTML = "ajoutés";
     // On clone notre lame pour en ajouter une en dessous
     let clonedBlade = blade.cloneNode(true);
     // On ajoute la nouvelle lame à l'épée
@@ -284,20 +291,58 @@ const nbClics = document.getElementById('useless-clics__nb');
 var   clics = 0;
 
 var   txtBtn = [
-  'ça va?',
-  'en fait',
-  'je m\'en fiche',
-  'déso pas déso...',
-  'sinon',
-  'quoi de neuf?',
-  'ah',
-  'on me dit à l\'oreillette',
-  'que ça aussi je m\'en fiche',
-  'BREF',
-  'On va s\'arrêter là',
-  'ça devient lassant.',
-  'Allez ciao!',
-  ''
+  'ça va?',             //1
+  'en fait',            //2
+  'je m\'en fiche',     //3
+  'déso pas déso...',   //4
+  'sinon',              //5
+  'quoi de neuf?',      //6
+  'ah',                 //7
+  'on me dit à l\'oreillette',      //8
+  'que ça aussi je m\'en fiche',    //9
+  'BREF',                           //10
+  'On va s\'arrêter là',            //11
+  'ça devient lassant.',            //12
+  'Allez ciao!',                    //13
+  '',
+  '',
+  '',
+  '',
+  '',
+  'Arrête',       //19
+  '',
+  '',
+  'Arrête de cliquer stp',   //22
+  '',
+  '',
+  '',
+  '',
+  'ARRETE',
+  '',
+  '',
+  '',
+  'Bon',          //31
+  'Et hop !',     //32
+  'Içi?',         //33
+  'Peut-être là?',//34
+  'Raté',         //35
+  'Je suis là',   //36
+  'à gauche',     //37
+  'en bas',       //38
+  'non plus',     //39
+  'peut etre?',   //40
+  'je crois en toi',    //41
+  'tu peux le faire',   //42
+  'toujours pas',       //43
+  'on continue ?',      //44
+  'c\'etait rhétorique',//45
+  'non',   //46
+  'non',   //47
+  'non',   //48
+  'non',   //49
+  'oui?',  //50
+  'non',   //51
+  'BON'    //52
 ];
 
 uselessBtn.addEventListener("mouseup", function(e) {
@@ -307,6 +352,15 @@ uselessBtn.addEventListener("mouseup", function(e) {
   if(txtIndex < txtBtn.length) {
     uselessBtn.innerHTML = txtBtn[txtIndex];
     txtIndex++;
+    console.log(uselessButton.offsetHeight);
+    console.log(uselessButton.offsetWidth);
+
+    if (31 < txtIndex) {  // ????? Pourquoi 27 et pas 26 ???
+      console.log(txtIndex);
+      console.log("coucou");
+      uselessBtn.style.top = Math.floor(Math.random() * (uselessButton.offsetHeight - 75 - 10)) + "px";
+      uselessBtn.style.left = Math.floor(Math.random() * (uselessButton.offsetWidth - 150 - 10)) + "px";
+    }
   }
 
   if (displayNbClics.classList.contains("hide-bloc") && clics > 0)
