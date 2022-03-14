@@ -32,7 +32,7 @@ var showRGB = false;
 /******************************/
 /*  SCROLL (la bordure tmtc)  */
 /******************************/
-
+/*
 const navBar = document.getElementById("nav-bar")
 const navButtons = document.getElementsByClassName("nav-button");
 
@@ -43,7 +43,19 @@ Array.prototype.forEach.call(navButtons, function(item) {
     else
       navBar.style.borderColor = "transparent";
   })
+});*/
+
+/************/
+/* BONJSOIR */
+/************/
+
+window.addEventListener("load", function() {
+  let h = new Date().getHours();
+
+  if(h >= 19 || h < 5)
+    document.getElementById("bonjsoir").innerHTML = "Bonsoir !";
 });
+
 
 /***************************************/
 /*  OUVERTURE/FERMETURE DES MINI JEUX  */
@@ -312,13 +324,9 @@ uselessBtn.addEventListener("mouseup", function(e) {
 const rgbButton = document.getElementById("rgb-button");
 const rgbCanvas = document.getElementById("rgb-canvas");
 
-const hslButton = document.getElementById("hsl-button");
-const hslCanvas = document.getElementById("hsl-canvas");
-
 const rgbDisplayValue = document.getElementById("rgb-value");
 
 const colors = ["red", "green", "blue"];
-const colors2 = ["hue", "sat", "light"];
 
 function  changeR(value) {
   showRGB = true;

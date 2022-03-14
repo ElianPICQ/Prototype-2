@@ -2,10 +2,18 @@
 /*
 	Sass Prototype 2
 */
+@font-face {
+  font-family: "Solerin-Magica";
+  src: url(fonts/Solerin-magica/SolerinMagica.otf);
+}
+@font-face {
+  font-family: "Magistros";
+  src: url(fonts/Magistros/Magistros.ttf);
+}
 :root {
   --clr-white: #fff;
-  --clr-pink: #3bc9dc;
-  --clr-pink-dark: #2f7781;
+  /*	--clr-blue: #3bc9dc;*/
+  --clr-blue-dark: #2f7781;
 }
 
 *, *::before, *::after {
@@ -31,7 +39,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   background-color: #000;
   /* logo GitHub */
 }
@@ -40,19 +48,25 @@ header h1 {
   top: 1rem;
   left: 1rem;
   font-size: 1rem;
-  text-decoration: underline var(--clr-white);
-  text-shadow: 0 0 10px var(--clr-white), 0 0 20px var(--clr-white), 0 0 30px var(--clr-pink-dark), 0 0 40px var(--clr-pink-dark), 0 0 50px var(--clr-pink-dark), 0 0 60px var(--clr-pink-dark), 0 0 70px var(--clr-pink-dark);
+  font-family: "Solerin-Magica", sans-serif;
+  text-shadow: 0 0 10px var(--clr-white), 0 0 20px var(--clr-white), 0 0 30px var(--clr-blue-dark), 0 0 40px var(--clr-blue-dark), 0 0 50px var(--clr-blue-dark), 0 0 60px var(--clr-blue-dark), 0 0 70px var(--clr-blue-dark);
   color: var(--clr-white);
+}
+header h1 a {
+  text-decoration: none;
+  border-bottom: 2px solid white;
+  padding: 0 5px;
+  width: 50px;
 }
 header h1 a:visited {
   text-decoration: underline var(--clr-white);
-  text-shadow: 0 0 10px var(--clr-white), 0 0 20px var(--clr-white), 0 0 30px var(--clr-pink-dark), 0 0 40px var(--clr-pink-dark), 0 0 50px var(--clr-pink-dark), 0 0 60px var(--clr-pink-dark), 0 0 70px var(--clr-pink-dark);
+  text-shadow: 0 0 10px var(--clr-white), 0 0 20px var(--clr-white), 0 0 30px var(--clr-blue-dark), 0 0 40px var(--clr-blue-dark), 0 0 50px var(--clr-blue-dark), 0 0 60px var(--clr-blue-dark), 0 0 70px var(--clr-blue-dark);
   color: var(--clr-white);
 }
 header #github-logo {
   position: absolute;
   top: 3.5rem;
-  left: 1rem;
+  left: 25px;
   width: 2rem;
   height: 2rem;
   background-image: url(img/ghub.png);
@@ -60,11 +74,11 @@ header #github-logo {
 }
 header #bonjsoir {
   font-size: 6rem;
+  font-family: "Magistros", sans-serif;
   color: #fff;
 }
 header #text-intro {
-  position: absolute;
-  bottom: 2rem;
+  font-family: "Magistros", sans-serif;
   text-align: center;
   line-height: 2rem;
   color: #fff;
@@ -74,7 +88,7 @@ header #text-intro {
 nav {
   position: fixed;
   top: 3rem;
-  right: 4.5rem;
+  right: 6rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -108,6 +122,7 @@ nav .nav-button:nth-child(3) {
   background-color: #000;
   color: white;
   font-size: 1.3rem;
+  font-family: "Magistros", sans-serif;
   text-align: center;
   padding: 1rem 0;
   border-bottom: 2px solid white;
@@ -119,20 +134,20 @@ nav .nav-button:nth-child(3) {
 #mini-jeux {
   background: linear-gradient(-35deg, #FF008E, #BD27D2, #591eb0, #09144A);
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   /* ICONES */
   /* JEUX */
 }
 #mini-jeux__icones {
-  width: 60%;
+  width: 100%;
   height: 100px;
   background-color: #33535a82;
   display: flex;
   align-items: center;
   justify-content: space-around;
   border: 3px solid #00000090;
+  margin: 5px 0;
 }
 #mini-jeux__icones > div {
   height: 70px;
@@ -144,9 +159,18 @@ nav .nav-button:nth-child(3) {
 }
 #mini-jeux__jeux {
   position: relative;
-  width: 50%;
-  height: 50vh;
+  width: 55%;
+  height: 70vh;
   background-color: transparent;
+}
+
+#mini-jeux-wrapper {
+  height: 80%;
+  width: 100%;
+  padding: 0 11rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
 }
 
 .mini-jeu {
@@ -154,7 +178,6 @@ nav .nav-button:nth-child(3) {
   position: absolute;
   top: 0;
   left: 0;
-  transform-origin: top;
   border-radius: 10px;
   border: 5px solid #1e1e1e;
   width: 100%;
@@ -163,40 +186,44 @@ nav .nav-button:nth-child(3) {
 
 /* Sliders pour les mini-jeux */
 .mini-jeux-hide {
-  transform: scaleY(0);
+  transform: scale(0);
   opacity: 0;
   transition: 1s;
 }
 
 .mini-jeux-show {
-  transform: scaleY(1);
+  transform: scale(1);
   opacity: 1;
   transition: 1s;
 }
 
 /* Boite Mini Jeux + SCORES */
-#mini-jeux-et-scores {
-  width: 100%;
+#mini-jeux-desc {
+  width: 40%;
+  height: 100%;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
 }
-#mini-jeux-et-scores .score-box {
-  width: 20%;
-  height: 75%;
-  background-color: #2b0e35cc;
-  border: 5px solid #00000090;
+#mini-jeux-desc h3 {
+  margin-bottom: 10px;
+  font-family: "Magistros";
+  color: #aaa;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 3px 5px;
+  border-radius: 10px;
+}
+#mini-jeux-desc #mini-jeux-score {
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-}
-#mini-jeux-et-scores #score1 {
-  border-left: none;
-  border-radius: 0 15px 15px 0;
-}
-#mini-jeux-et-scores #score2 {
-  border-right: none;
-  border-radius: 15px 0 0 15px;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin-top: 10px;
+  padding: 15px;
 }
 
 /**********
@@ -212,6 +239,7 @@ nav .nav-button:nth-child(3) {
   height: 70px;
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 #shifumi-score span {
   text-align: center;

@@ -16,7 +16,7 @@
 		<a id="github-logo" href="https://github.com/ElianPICQ" target="_blank"></a>
 		<span id="bonjsoir">Bonjour !</span>
 
-		<div id="text-intro"><p>Salut ! Moi c'est Elian. Bienvenue dans mon antre, où je teste ce qui me passe par la tête.<br />
+		<div id="text-intro"><p>Je me presente, je m'appelle Elian.<br />Bienvenue chez moi.<br />
 		Bonne visite ?</p></div>
 
 		<nav id="nav-bar">
@@ -25,35 +25,46 @@
 			<a href="#draw-canvas" class="nav-button"></a>
 		</nav>
 
-		<span id="nav-caption">Autre chose ?<br />Clique</span>
+		<span id="nav-caption">Autre chose ?<br />Clique.</span>
 
 	</header>
 
 	<main>
 
 		<section id="mini-jeux" class="screen-element">
-			<h3>Mini Jeu ?</h3>
+			<div id="mini-jeux-wrapper">
+				<div id="mini-jeux-desc">
+					<h3>Mini Jeu ?</h3>
 
-			<div id="mini-jeux__icones">
-				<div id="shifumi-icone" class="icone">pierre</div>
-				<div id="infinite-sword-icone" class="icone">épée</div>
-				<div id="useless-button-icone" class="icone">bouton</div>
-				<div id="color-editor-icone" class="icone">color editor</div>
-			</div>
-
-			<div id="mini-jeux-et-scores">
-
-				<div id="score1" class="score-box">
-					<div id="shifumi-score" class="hide-bloc mini-jeu-score">
-						<div id="user-score"><span class="score-indication">TOI</span><span id="display-user-score"></span></div>
-						<span>SCORES SHIFUMI</span>
-						<div id="my-score"><span class="score-indication">BOT</span><span id="display-my-score"></span></div>
+					<div id="mini-jeux__icones">
+						<div id="shifumi-icone" class="icone">pierre</div>
+						<div id="infinite-sword-icone" class="icone">épée</div>
+						<div id="useless-button-icone" class="icone">bouton</div>
+						<div id="color-editor-icone" class="icone">color editor</div>
 					</div>
 
-					<div id="rgb-score" class="hide-bloc mini-jeu-score">
-						<span id="rgb-score-value"></span>
+
+					<div id="mini-jeux-score">
+						<div id="shifumi-score" class="hide-bloc mini-jeu-score">
+							<div id="user-score"><span class="score-indication">TOI</span><span id="display-user-score"></span></div>
+							<span>SCORES SHIFUMI</span>
+							<div id="my-score"><span class="score-indication">BOT</span><span id="display-my-score"></span></div>
+						</div>
+
+						<div id="infinite-sword-count" class="hide-bloc mini-jeu-score">
+							<p><span id="infinite-sword-count__nb"></span> Morceaux de lame ajouté.</p>
+						</div>
+
+						<div id="useless-clics" class="hide-bloc mini-jeu-score">
+							<p>ça nous fait <span id="useless-clics__nb"></span> clics !</p>
+						</div>
+
+						<div id="rgb-score" class="hide-bloc mini-jeu-score">
+							<span id="rgb-score-value"></span>
+						</div>
 					</div>
 				</div>
+
 
 				<div id="mini-jeux__jeux">
 
@@ -170,52 +181,41 @@ Bravo \ | /
   bien la pointe
 
 </pre>
-								</div>
 							</div>
 						</div>
+					</div>
 
 						<!-- USELESS BUTTON -->
 
-						<div id="useless-button" class="mini-jeu mini-jeux-hide">
-								<button id="useless-button__btn">Salut toi</button>
-						</div>
+					<div id="useless-button" class="mini-jeu mini-jeux-hide">
+							<button id="useless-button__btn">Salut toi</button>
+					</div>
 
 
 						<!-- RGB COLOR EDITOR -->
 
-						<div id="color-editor" class="mini-jeu mini-jeux-hide">
-							<div id="color-container">
+					<div id="color-editor" class="mini-jeu mini-jeux-hide">
+						<div id="color-container">
 
-								<!-- RGB -->
-								<div id="rgb-canvas" class="color-canvas show-canvas">
-									<span class="color-input">
-										<input type="range" id="r-slider" name="r-slider" min="0" max="255" value="255" onChange="changeR(this.value)" onInput="changeR(this.value)" />
-									</span>
-									<span class="color-input">
-										<input type="range" id="g-slider" name="g-slider" min="0" max="255" value="255" onChange="changeG(this.value)" onInput="changeG(this.value)" />
-									</span>
-									<span class="color-input">
-										<input type="range" id="b-slider" name="b-slider" min="0" max="255" value="255" onChange="changeB(this.value)" onInput="changeB(this.value)" />
-									</span>
-									<span id="rgb-value"></span>
+							<!-- RGB -->
+							<div id="rgb-canvas" class="color-canvas show-canvas">
+								<span class="color-input">
+									<input type="range" id="r-slider" name="r-slider" min="0" max="255" value="255" onChange="changeR(this.value)" onInput="changeR(this.value)" />
+								</span>
+								<span class="color-input">
+									<input type="range" id="g-slider" name="g-slider" min="0" max="255" value="255" onChange="changeG(this.value)" onInput="changeG(this.value)" />
+								</span>
+								<span class="color-input">
+									<input type="range" id="b-slider" name="b-slider" min="0" max="255" value="255" onChange="changeB(this.value)" onInput="changeB(this.value)" />
+								</span>
+								<span id="rgb-value"></span>
 
-								</div>
 							</div>
 						</div>
 					</div>
-
-					<!-- Fin des mini jeux -->
-
-					<div id="score2" class="score-box">
-						<div id="infinite-sword-count" class="hide-bloc mini-jeu-score">
-							<p><span id="infinite-sword-count__nb"></span> Morceaux de lame ajouté.</p>
-						</div>
-
-						<div id="useless-clics" class="hide-bloc mini-jeu-score">
-							<p>ça nous fait <span id="useless-clics__nb"></span> clics !</p>
-						</div>
-					</div>
 				</div>
+			</div>
+				<!-- Fin des mini jeux -->
 		</section>
 
 	<!-- Toile Pour dessiner -->
