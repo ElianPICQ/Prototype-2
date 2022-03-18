@@ -352,12 +352,8 @@ uselessBtn.addEventListener("mouseup", function(e) {
   if(txtIndex < txtBtn.length) {
     uselessBtn.innerHTML = txtBtn[txtIndex];
     txtIndex++;
-    console.log(uselessButton.offsetHeight);
-    console.log(uselessButton.offsetWidth);
 
-    if (31 < txtIndex) {  // ????? Pourquoi 27 et pas 26 ???
-      console.log(txtIndex);
-      console.log("coucou");
+    if (31 < txtIndex) {
       uselessBtn.style.top = Math.floor(Math.random() * (uselessButton.offsetHeight - 75 - 10)) + "px";
       uselessBtn.style.left = Math.floor(Math.random() * (uselessButton.offsetWidth - 150 - 10)) + "px";
     }
@@ -475,18 +471,22 @@ const canvas = document.getElementById("canvas-painting");
 const toolbar = document.getElementById("canvas-toolbar");
 
 // Contexte. Ou ce qui va dessiner
+
 const ctx = canvas.getContext("2d");
 
 // On definit la taille du canvas en JS
 // car un width: 100% en CSS a un effet de zoom
-const canvasOffsetX = canvas.offsetLeft;
+var canvasOffsetX = canvas.offsetLeft;
+var canvasOffsetY = canvas.offsetTop;
 
 window.addEventListener("load", ep_resizeCanvas);
 window.addEventListener("resize", ep_resizeCanvas);
 
 function ep_resizeCanvas() {
-canvas.width = window.innerWidth - canvasOffsetX;
-canvas.height = window.innerHeight;
+  canvasOffsetX = canvas.offsetLeft;
+  canvasOffsetY = canvas.offsetTop;
+  canvas.width = window.innerWidth - canvasOffsetX;
+  canvas.height = window.innerHeight;
 }
 
 let isPainting = false;
@@ -499,13 +499,46 @@ toolbar.addEventListener("click", e => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 });
 
-toolbar.addEventListener("change", e => {
-  if (e.target.id === "couleur")
-    ctx.strokeStyle = e.target.value;
+let colorBuff;
+let isGomme = false;
 
-  if (e.target.id === "line-width")
-    lineWidth = e.target.value;
+toolbar.addEventListener("change", e => {
+
+  switch(e.target.id) {
+    case "couleur":
+      ctx.strokeStyle = e.target.value;
+      break;
+
+    case "line-width":
+      lineWidth = e.target.value;
+      break;
+
+    case "draw-canvas__gomme":
+      isGomme = true;
+      colorBuff = ctx.strokeStyle;
+      ctx.strokeStyle = "#ffffff";
+      ctx.lineCap = "round";
+      break;
+
+    case "draw-canvas__roundpen":
+      if (isGomme === true) {
+        ctx.strokeStyle = colorBuff;
+        isGomme = false;
+      }
+      ctx.lineCap = "round";
+      break;
+
+    case "draw-canvas__buttpen":
+      if (isGomme === true) {
+        ctx.strokeStyle = colorBuff;
+        isGomme = false;
+      }
+      ctx.lineCap = "butt";
+      break;  }
 });
+
+const drawRadio = document.getElementsByName("pen-type");
+let drawRadioLength = drawRadio.length;
 
 // Interactions canvas (dessiner quoi)
 
@@ -513,10 +546,13 @@ function  draw(e) {
   if (!isPainting)
     return;
 
+  for (var i = 0; i < drawRadioLength; i++) {
+    if (drawRadio[i].checked)
+      ctx.lineCap = drawRadio[i].value;
+  }
   ctx.lineWidth = lineWidth;
-  ctx.lineCap = "round";
   //Sans la soustraction, le trait serait 100px vers la droite (toolbar)
-  ctx.lineTo(e.clientX - canvasOffsetX + 20, e.clientY);
+  ctx.lineTo(e.clientX - canvasOffsetX, e.clientY);
   ctx.stroke();
 }
 

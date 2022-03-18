@@ -74,16 +74,6 @@
 					<!-- SHIFUMI -->
 					<div id="shifumi" class="mini-jeu mini-jeux-hide">
 						<form id="shifumi-box" action="" method="get">
-							<h3 id="shifumi-title">Shifumi</h3>
-
-							<!-- Affichage des choix des joueurs et du résultat -->
-							<div id="shifumi-fight">
-								<div class="score-indication-box"><span id="user-choice"></span><span class="score-indication">TOI</span></div>
-
-								<div id="shifumi-results"><span id="shifumi-results-display"></span></div>
-
-								<div class="score-indication-box"><span id="my-choice"></span><span class="score-indication">BOT</span></div>
-							</div>
 
 							<!-- CHOIX DU SHIFUMI -->
 							<div id="shifumi-choice">
@@ -104,6 +94,15 @@
 							</div>
 
 							<button id="shifumi-submit">Confirmer</button>
+
+							<!-- Affichage des choix des joueurs et du résultat -->
+							<div id="shifumi-fight">
+								<div class="score-indication-box"><span id="user-choice"></span><span class="score-indication">TOI</span></div>
+
+								<div id="shifumi-results"><span id="shifumi-results-display"></span></div>
+
+								<div class="score-indication-box"><span id="my-choice"></span><span class="score-indication">BOT</span></div>
+							</div>
 
 						</form>
 					</div>
@@ -229,11 +228,31 @@ Bravo \ | /
 		<section id="draw-canvas" class="screen-element">
 			<div id="canvas-toolbar">
 				<h3>Dessine</h3>
-				<label for="couleur">Couleur</label>
-				<input id="couleur" name="couleur" type="color" />
 
-				<label for="line-width">Epaisseur</label>
-				<input id="line-width" name="line-width" type="number" value="5" min="1" max="1000" />
+				<div id="canvas-toolbar__tools">
+					<label for="couleur"></label>
+					<input id="couleur" name="couleur" type="color" />
+
+					<label for="line-width" class="canvas-toolbar-label">Epaisseur</label>
+					<input id="line-width" name="line-width" type="number" value="5" min="1" max="1000" />
+
+					<div id="lineCap">
+						<label class="radio-input">
+							<input type="radio" id="draw-canvas__gomme" name="pen-type" value="round" />
+							<span>Gomme</span>
+						</label>
+
+						<label class="radio-input">
+							<input type="radio" id="draw-canvas__roundpen" name="pen-type" value="round" checked />
+							<span>Rond</span>
+						</label>
+
+						<label class="radio-input">
+							<input type="radio" id="draw-canvas__buttpen" name="pen-type" value="butt" />
+							<span>Carré</span>
+						</label>
+					</div>
+				</div>
 
 				<button id="clear-canvas">Effacer</button>
 			</div>

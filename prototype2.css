@@ -25,7 +25,7 @@
 html {
   font-size: 18px;
   scroll-behavior: smooth;
-  /*	overflow: hidden;*/
+  overflow-x: hidden;
 }
 
 .screen-element {
@@ -311,14 +311,14 @@ nav .nav-button:nth-child(3) {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
 /** Affichage des (pierre/feuille/ciseaux) cliquables **/
 #shifumi-choice {
   width: 80%;
-  height: 60%;
+  height: 85px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -326,18 +326,10 @@ nav .nav-button:nth-child(3) {
 }
 
 #shifumi-choice > label {
-  width: 75px;
-  height: 75px;
+  width: 85px;
+  height: 85px;
   position: relative;
   display: inline-block;
-}
-
-#pierre, #ciseaux {
-  margin-top: auto;
-}
-
-#feuille {
-  margin-bottom: auto;
 }
 
 #shifumi-pierre-display, #shifumi-feuille-display, #shifumi-ciseaux-display {
@@ -376,7 +368,7 @@ nav .nav-button:nth-child(3) {
 /* Affichage feuille cliquable */
 #shifumi-feuille-display {
   background-image: url(img/feuille.png);
-  background-size: 60px;
+  background-size: 65px;
   background-repeat: no-repeat;
 }
 
@@ -403,7 +395,7 @@ nav .nav-button:nth-child(3) {
 /* Affichage des choix */
 #shifumi-fight {
   width: 70%;
-  height: 100px;
+  height: 110px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -415,6 +407,7 @@ nav .nav-button:nth-child(3) {
   width: 75px;
   height: 75px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  margin-top: auto;
 }
 
 #user-choice, #my-choice {
@@ -435,10 +428,7 @@ nav .nav-button:nth-child(3) {
   height: 50px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
   border-radius: 10px;
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translateX(-50%);
+  margin-bottom: auto;
 }
 
 .score-indication {
@@ -611,41 +601,81 @@ nav .nav-button:nth-child(3) {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
   height: 100%;
-  width: 100px;
+  min-width: 6%;
   background-color: #1a1a1a;
   color: #fff;
-  padding-top: 13%;
 }
 #draw-canvas #canvas-toolbar h3 {
-  position: relative;
-  top: -25%;
-  margin: 25px 0;
+  font-family: "Magistros";
+  padding: 0 5px;
   background: -webkit-linear-gradient(90deg, #91e4e4, #86a8e7, #7f7fd5);
   background: linear-gradient(90deg, #91e4e4, #86a8e7, #7f7fd5);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-#draw-canvas #canvas-toolbar label {
+#draw-canvas #canvas-toolbar__tools {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 4px solid #fff;
+  border-bottom: 4px solid #fff;
+  padding: 15px;
+}
+#draw-canvas #canvas-toolbar__tools #lineCap {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  padding: 10px 0;
+  border-top: 3px solid #fff;
+}
+#draw-canvas #canvas-toolbar__tools #lineCap .canvas-toolbar-label {
   border-top: 3px solid white;
   text-align: center;
-  min-width: 75%;
-  max-width: 90%;
   padding-top: 10px;
 }
+#draw-canvas #canvas-toolbar__tools label, #draw-canvas #canvas-toolbar__tools input {
+  margin: 10px 0;
+}
 #draw-canvas #canvas-toolbar #clear-canvas {
-  position: relative;
-  top: 25%;
-  padding: 5px 15px;
   background-color: #2b776c;
   color: white;
   border: none;
   border-radius: 10px;
+  padding: 10px 15px;
+  font-weight: 800;
+  font-size: 0.8rem;
+}
+#draw-canvas #canvas-toolbar #clear-canvas:active {
+  box-shadow: inset 0 0 8px 0 rgba(0, 0, 0, 0.8);
 }
 
-#canvas-toolbar * {
-  margin: 10px 0;
+/* Radio inputs (Gomme & types de pointes) */
+.radio-input {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  display: inline-block;
+}
+.radio-input span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  cursor: pointer;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.8);
+  background-size: cover;
+}
+.radio-input input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.radio-input input:checked + span {
+  box-shadow: inset 0 0 8px 0 rgba(0, 0, 0, 0.8);
 }
 
 #line-width {
