@@ -668,6 +668,8 @@ nav .nav-button:nth-child(3) {
   cursor: pointer;
   box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.8);
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .radio-input input {
   opacity: 0;
@@ -676,6 +678,11 @@ nav .nav-button:nth-child(3) {
 }
 .radio-input input:checked + span {
   box-shadow: inset 0 0 8px 0 rgba(0, 0, 0, 0.8);
+}
+
+#canvas-gomme-display {
+  background-image: url(img/gomme.png);
+  background-size: 40px;
 }
 
 #line-width {
