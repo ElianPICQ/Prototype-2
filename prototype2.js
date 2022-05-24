@@ -29,6 +29,13 @@ const rgbScoreValue = document.getElementById("rgb-score-value");
 
 var showRGB = false;
 
+/* Ne pas oublier que le 0 est inclu */
+/* max est le nombre de possibilités */
+function  getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+
 /******************************/
 /*  SCROLL (la bordure tmtc)  */
 /******************************/
@@ -43,7 +50,7 @@ Array.prototype.forEach.call(navButtons, function(item) {
     else if (item.id === "mini-jeux-ancre")
       navBar.style.borderColor = "#000";
     else if (item.id === "draw-canvas-ancre")
-      navBar.style.borderColor = "transparent"
+      navBar.style.borderColor = "transparent";
   })
 });
 
@@ -57,6 +64,42 @@ window.addEventListener("load", function() {
   if(h >= 19 || h < 5)
     document.getElementById("bonjsoir").innerHTML = "Bonsoir !";
 });
+
+
+/*******************/
+/* COLOR TILES YAY */
+/*******************/
+
+
+/* Remplir l'écran */
+
+const tile = document.getElementById("OGTile");
+const header = document.getElementById("header");
+
+window.addEventListener("load", function() {
+/*  let newTile = tile.cloneNode(true);
+  console.log(newTile.offsetTop);
+  console.log(header.offsetHeight);
+  
+  for (let a = 0; a < 500; a++)
+  {
+    let newTile = tile.cloneNode(true);
+    header.insertBefore(newTile, tile);
+    console.log(newTile.offsetTop);
+    console.log(header.offsetHeight);
+  }*/
+});
+
+/* Changer la couleur */
+
+function ep_changeTileColor(tile)
+{
+  let r = getRandomInt(256);
+  let g = getRandomInt(256);
+  let b = getRandomInt(256);
+
+  tile.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
+}
 
 
 /***************************************/
