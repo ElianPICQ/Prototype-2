@@ -77,18 +77,16 @@ const tile = document.getElementById("OGTile");
 const header = document.getElementById("header");
 
 window.addEventListener("load", function() {
-/*  let newTile = tile.cloneNode(true);
-  console.log(newTile.offsetTop);
-  console.log(header.offsetHeight);
-  
-  for (let a = 0; a < 500; a++)
+  let newTile = tile.cloneNode(true);
+  let headerHeight = header.offsetHeight;
+
+  while ((newTile.offsetTop < header.offsetHeight))
   {
-    let newTile = tile.cloneNode(true);
-    header.insertBefore(newTile, tile);
-    console.log(newTile.offsetTop);
-    console.log(header.offsetHeight);
-  }*/
+    newTile = tile.cloneNode(true);
+    header.append(newTile);
+  }
 });
+var allTiles = document.getElementsByClassName("color-tile");
 
 /* Changer la couleur */
 
@@ -99,6 +97,23 @@ function ep_changeTileColor(tile)
   let b = getRandomInt(256);
 
   tile.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
+}
+
+/* Effacer (remettre noir) */
+// Manuel
+function erase_single_tile(tile) {
+  preventDefault();
+  console.log("yo");
+  if (tile.style.backgroundColor != "#000000")
+      tile.style.backgroundColor = "#000000";
+}
+
+// Auto
+function ep_tile_erase() {
+  Array.prototype.forEach.call(allTiles, function(tile) {
+    if (tile.style.backgroundColor != "#000000")
+      tile.style.backgroundColor = "#000000";
+  });
 }
 
 
