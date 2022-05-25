@@ -119,9 +119,7 @@ nav {
   justify-content: space-evenly;
   width: 4rem;
   height: 10rem;
-  background-color: rgba(0, 0, 0, 0.3);
   border-radius: 20px;
-  border: 2px solid white;
 }
 nav .nav-button {
   pointer-events: all;
@@ -145,7 +143,6 @@ nav .nav-button:nth-child(3) {
   top: 1.5rem;
   right: 2.9rem;
   pointer-events: none;
-  background-color: #000;
   color: white;
   font-size: 1.3rem;
   font-family: "Magistros", sans-serif;

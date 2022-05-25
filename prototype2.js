@@ -46,11 +46,20 @@ const navButtons = document.getElementsByClassName("nav-button");
 Array.prototype.forEach.call(navButtons, function(item) {
   item.addEventListener("click", function() {
     if (item.id === "top-button")
-      navBar.style.borderColor = "#fff";
-    else if (item.id === "mini-jeux-ancre")
-      navBar.style.borderColor = "#000";
-    else if (item.id === "draw-canvas-ancre")
+    {
       navBar.style.borderColor = "transparent";
+      navBar.style.backgroundColor = "transparent"
+    }
+    else if (item.id === "mini-jeux-ancre")
+    {
+      navBar.style.borderColor = "#000";
+      navBar.style.backgroundColor = "rgba(0, 0, 0, 0.3)"
+    }
+    else if (item.id === "draw-canvas-ancre")
+    {
+      navBar.style.borderColor = "transparent";
+      navBar.style.backgroundColor = "transparent"
+    }
   })
 });
 
@@ -101,12 +110,20 @@ function ep_changeTileColor(tile)
 
 /* Effacer (remettre noir) */
 // Manuel
+/*
+Array.prototype.forEach.call(allTiles, function(tile) {
+  tile.addEventListener("oncontextmenu" function(e) {
+    e.preventDefault();
+    console.log("coucou")
+  })
+})
+
 function erase_single_tile(tile) {
   preventDefault();
   console.log("yo");
   if (tile.style.backgroundColor != "#000000")
       tile.style.backgroundColor = "#000000";
-}
+}*/
 
 // Auto
 function ep_tile_erase() {
