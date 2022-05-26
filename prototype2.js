@@ -72,6 +72,8 @@ window.addEventListener("load", function() {
 
   if(h >= 19 || h < 5)
     document.getElementById("bonjsoir").innerHTML = "Bonsoir !";
+  else
+    document.getElementById("bonjsoir").innerHTML = "Bonjour !";
 });
 
 
