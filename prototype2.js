@@ -348,82 +348,147 @@ function  addBlade(entry) {
 /*********************************/
 
 const uselessBtn = document.getElementById('useless-button__btn');
-var   txtIndex = 0;
+var   txtIndex = -1;
 
 const nbClics = document.getElementById('useless-clics__nb');
 var   clics = 0;
 
 var   txtBtn = [
-  'ça va?',             //1
-  'en fait',            //2
-  'je m\'en fiche',     //3
-  'déso pas déso...',   //4
-  'sinon',              //5
-  'quoi de neuf?',      //6
-  'ah',                 //7
-  'on me dit à l\'oreillette',      //8
-  'que ça aussi je m\'en fiche',    //9
-  'BREF',                           //10
-  'On va s\'arrêter là',            //11
-  'ça devient lassant.',            //12
-  'Allez ciao!',                    //13
+  'ça va?',             //0
+  'en fait',            //1
+  'je m\'en fiche',     //2
+  'déso pas déso...',   //3
+  'sinon',              //4
+  'quoi de neuf?',      //5
+  'ah',                 //6
+  'on me dit à l\'oreillette',      //7
+  'que ça aussi je m\'en fiche',    //8
+  'BREF',                           //9
+  'On va s\'arrêter là',            //10
+  'ça devient lassant.',            //11
+  'Allez ciao!',                    //12
   '',
+  'Arrête',       //14
   '',
+  'Arrête de cliquer stp',   //16
   '',
+  'ARRETE',       //18
   '',
+  'Bon',          //20
+  'Et hop !',     //21
+  'Içi?',         //22
+  'Peut-être là?',//23
+  'Raté',         //24
+  'Je suis là',   //25
+  'à gauche',     //26
+  'en bas',       //27
+  'non plus',     //28
+  'peut etre?',   //29
+  'je crois en toi',    //30
+  'tu peux le faire',   //31
+  'toujours pas',       //32
+  'on continue ?',      //33
+  'c\'etait rhétorique',//34
+  'non',   //35
+  'non',   //36
+  'non',   //37
+  'non',   //38
+  'oui?',  //39
+  'non',   //40
+  'BON',    //41
   '',
-  'Arrête',       //19
-  '',
-  '',
-  'Arrête de cliquer stp',   //22
-  '',
-  '',
-  '',
-  '',
-  'ARRETE',
-  '',
-  '',
-  '',
-  'Bon',          //31
-  'Et hop !',     //32
-  'Içi?',         //33
-  'Peut-être là?',//34
-  'Raté',         //35
-  'Je suis là',   //36
-  'à gauche',     //37
-  'en bas',       //38
-  'non plus',     //39
-  'peut etre?',   //40
-  'je crois en toi',    //41
-  'tu peux le faire',   //42
-  'toujours pas',       //43
-  'on continue ?',      //44
-  'c\'etait rhétorique',//45
-  'non',   //46
-  'non',   //47
-  'non',   //48
-  'non',   //49
-  'oui?',  //50
-  'non',   //51
-  'BON'    //52
+  'Je te le condède...',        //43
+  'Tu es tenace',               //44
+  'mais t\'as pas mieux à faire ?',                             //45
+  'Si tu t\'ennuie tant t\'as qu\'à finir les autres jeux',     //46
 ];
+
+var lastClic = 0;
+var RPusellesClics = 0;
+var boolChangeUslTxt = true;
+
+function  big_button_and_text() {
+  uselessBtn.style.width = "100%";
+  uselessBtn.style.height = "100%";
+  uselessBtn.style.backgroundColor = "#621111";
+  uselessButton.style.backgroundColor = "#17bfaf"
+  uselessBtn.style.fontSize = "2000%"
+}
+
+function  uslBtn_back_to_normal() {
+  uselessBtn.style.fontSize = "1.2em";
+  uselessBtn.style.minWidth = "175px";
+  uselessBtn.style.minHeight = "75px"
+  uselessBtn.style.top = "";
+  uselessBtn.style.left = "";
+}
+
+function  pause_in_text() {
+  if(txtIndex == 13 || txtIndex == 15 || txtIndex == 17 || txtIndex == 19 || txtIndex == 42)
+    return 1;
+  return 0;
+}
+
+function  restart_text() {
+  if (RPusellesClics == 5 || RPusellesClics == 9 || RPusellesClics == 15 || RPusellesClics == 20 || RPusellesClics == 40)
+    return 1;
+  return 0;
+}
+
+// Main loop event
 
 uselessBtn.addEventListener("mouseup", function(e) {
   clics++;
   nbClics.innerHTML = clics;
 
-  if(txtIndex < txtBtn.length) {
-    uselessBtn.innerHTML = txtBtn[txtIndex];
-    txtIndex++;
+//  Empêche de changer le texte trop vite
+  var nowClic = new Date();
+  if (nowClic - lastClic < 1 && txtIndex < 32)
+    return;
+  lastClic = nowClic;
 
-    if (31 < txtIndex) {
-      uselessBtn.style.top = Math.floor(Math.random() * (uselessButton.offsetHeight - 75 - 10)) + "px";
-      uselessBtn.style.left = Math.floor(Math.random() * (uselessButton.offsetWidth - 150 - 10)) + "px";
-    }
+//  Faut il changer le texte?
+  if (pause_in_text())
+  {
+    boolChangeUslTxt = false;
+    RPusellesClics++;
+  }
+
+// On autorise le changement de texte apres passage(s) à vide
+  if (restart_text())
+    boolChangeUslTxt = true;
+
+//  Changer le texte quand nécessaire
+  if(txtIndex < txtBtn.length - 1 && boolChangeUslTxt)
+  {
+    txtIndex++;
+    uselessBtn.innerHTML = txtBtn[txtIndex];
+  }
+
+// On centre le bouton
+  if (RPusellesClics == 40)
+   uslBtn_back_to_normal()
+
+//  Gros BON enervé?
+  if (txtIndex == 41)
+    big_button_and_text();
+
+//  Bouton change de taille apres le BON (si dessus)
+  if (42 == txtIndex)
+  {
+    uselessBtn.style.width = Math.floor(10 + Math.random() * 100) + "px";
+    uselessBtn.style.height = Math.floor(10 + Math.random() * 100) + "px";
+    uselessBtn.style.minHeight = "10px";
+  }
+
+//  On met le bouton à un endroit au pif
+  if (20 < txtIndex && txtIndex < 43) {
+    uselessBtn.style.top = Math.floor(Math.random() * (uselessButton.offsetHeight - uselessBtn.offsetHeight)) + "px";
+    uselessBtn.style.left = Math.floor(Math.random() * (uselessButton.offsetWidth - uselessBtn.offsetWidth)) + "px";
   }
 
   if (displayNbClics.classList.contains("hide-bloc") && clics > 0)
-      displayNbClics.classList.replace("hide-bloc", "show-bloc");
+    displayNbClics.classList.replace("hide-bloc", "show-bloc");
 });
 
 

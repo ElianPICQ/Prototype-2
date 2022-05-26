@@ -576,9 +576,15 @@ nav {
 
 #useless-button__btn {
 	position: absolute;
-	font-size: 16px;
+	user-select: none;
+	box-sizing: content-box;
+	display: flex;
+	align-items: center; justify-content: center;
+	text-align: center;
+	font-size: 1.2em;
 	width: 175px;
 	min-height: 75px;
+	padding: 8px;
 	border: solid 1px #010101;
 	background-color: #17bfaf;
 	border-radius: 5px;
