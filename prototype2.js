@@ -445,7 +445,7 @@ uselessBtn.addEventListener("mouseup", function(e) {
 
 //  Empêche de changer le texte trop vite
   var nowClic = new Date();
-  if (nowClic - lastClic < 1 && txtIndex < 32)
+  if (nowClic - lastClic < 500 && txtIndex < 32)
     return;
   lastClic = nowClic;
 
