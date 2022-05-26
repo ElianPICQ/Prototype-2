@@ -8,6 +8,7 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 	<link rel="stylesheet" type="text/css" href="prototype2.css" />
+	<link rel="stylesheet" type="text/css" href="css/all.css" />
 </head>
 <body>
 	<div id="page-container">
@@ -15,9 +16,8 @@
 		<header class="screen-element" id="header">
 			<div id="OGTile" class="color-tile" onclick="ep_changeTileColor(this)"></div>
 
-			<h1><a href="https://elianpicq.github.io/Prototype-2/" alt="lien github pages">EPIK</a></h1>
-			<a id="github-logo" href="https://github.com/ElianPICQ" target="_blank"></a>
-
+			<h1>EPIK</h1>
+			<a id="github-logo" href="https://github.com/ElianPICQ" target="_blank"><i class="fa-brands fa-github"></i></a>
 			<div id="header-text">
 				<span id="bonjsoir">Bonjour !</span>
 
@@ -31,7 +31,7 @@
 				<a href="#draw-canvas" class="nav-button" id="draw-canvas-ancre"></a>
 			</nav>
 
-			<span id="nav-caption">Autre chose ?<br /><span id="tile-eraser" onclick="ep_tile_erase(this)">Clique.</span></span>
+			<span id="nav-caption">Autre chose ?<br /><span id="tile-eraser" onclick="ep_tile_erase(this, event)">Clique.</span></span>
 
 		</header>
 
@@ -250,12 +250,12 @@ Bravo \ | /
 
 							<label class="radio-input">
 								<input type="radio" id="draw-canvas__roundpen" name="pen-type" value="round" checked />
-								<span>Rond</span>
+								<span><div id="round-pen" class="pen-class"></div></span>
 							</label>
 
 							<label class="radio-input">
 								<input type="radio" id="draw-canvas__buttpen" name="pen-type" value="butt" />
-								<span>Carré</span>
+								<span><div id="square-pen" class="pen-class"></div></span>
 							</label>
 						</div>
 					</div>

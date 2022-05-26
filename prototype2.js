@@ -99,7 +99,7 @@ var allTiles = document.getElementsByClassName("color-tile");
 
 /* Changer la couleur */
 
-function ep_changeTileColor(tile)
+function ep_changeTileColor(tile, e)
 {
   let r = getRandomInt(256);
   let g = getRandomInt(256);
@@ -109,23 +109,7 @@ function ep_changeTileColor(tile)
 }
 
 /* Effacer (remettre noir) */
-// Manuel
-/*
-Array.prototype.forEach.call(allTiles, function(tile) {
-  tile.addEventListener("oncontextmenu" function(e) {
-    e.preventDefault();
-    console.log("coucou")
-  })
-})
 
-function erase_single_tile(tile) {
-  preventDefault();
-  console.log("yo");
-  if (tile.style.backgroundColor != "#000000")
-      tile.style.backgroundColor = "#000000";
-}*/
-
-// Auto
 function ep_tile_erase() {
   Array.prototype.forEach.call(allTiles, function(tile) {
     if (tile.style.backgroundColor != "#000000")
@@ -137,6 +121,8 @@ function ep_tile_erase() {
 /***************************************/
 /*  OUVERTURE/FERMETURE DES MINI JEUX  */
 /***************************************/
+
+var boolFirstDisplayIS = false;
 
 function  hide_mini_jeux() {
   Array.prototype.forEach.call(miniJeux, function(item) {
@@ -168,6 +154,7 @@ Array.prototype.forEach.call(miniJeuxIcones, function(icone) {
         }
         else if (swordContainer.classList.contains("mini-jeux-hide")) {
           hide_mini_jeux();
+          boolFirstDisplayIS = true;
           swordContainer.classList.replace("mini-jeux-hide", "mini-jeux-show");
         }
         break;
@@ -349,7 +336,8 @@ function  addBlade(entry) {
 
   InfiniteSwordCount.innerHTML = bladeCount;
 
-  if (displayInfiniteSwordCount.classList.contains("hide-bloc") && bladeCount > 0)
+//  Cassé car si l'écran est grand (hauteur), l'observer aura deja ajouté des morceaux de lame
+  if (displayInfiniteSwordCount.classList.contains("hide-bloc") && bladeCount > 0 && boolFirstDisplayIS == true)
       displayInfiniteSwordCount.classList.replace("hide-bloc", "show-bloc");
 }
 
@@ -549,6 +537,7 @@ const toolbar = document.getElementById("canvas-toolbar");
 
 const ctx = canvas.getContext("2d");
 
+
 // On definit la taille du canvas en JS
 // car un width: 100% en CSS a un effet de zoom
 var canvasOffsetX = canvas.offsetLeft;
@@ -581,7 +570,11 @@ toolbar.addEventListener("change", e => {
 
   switch(e.target.id) {
     case "couleur":
-      ctx.strokeStyle = e.target.value;
+      if (isGomme)
+        colorBuff = e.target.value;
+      else
+        ctx.strokeStyle = e.target.value;
+      console.log(colorBuff);
       break;
 
     case "line-width":
@@ -609,10 +602,11 @@ toolbar.addEventListener("change", e => {
         isGomme = false;
       }
       ctx.lineCap = "butt";
-      break;  }
+      break;
+    }
 });
 
-const drawRadio = document.getElementsByName("pen-type");
+var drawRadio = document.getElementsByName("pen-type");
 let drawRadioLength = drawRadio.length;
 
 // Interactions canvas (dessiner quoi)

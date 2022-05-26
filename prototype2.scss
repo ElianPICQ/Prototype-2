@@ -27,7 +27,7 @@
 html {
 	font-size: 18px;
 	scroll-behavior: smooth;
-	overflow-x: hidden;
+	overflow: hidden;
 }
 
 .screen-element {
@@ -39,60 +39,83 @@ html {
 
 header {
 	position: relative;
+	overflow: hidden;
 
 	display: flex;
-	flex-direction: column;
-	align-items: center; justify-content: space-evenly;
+	flex-wrap: wrap;
+	align-content: center;	justify-content: center;
 
 	background-color: #000;
 
 	h1 {
 		position: absolute;
-		top: 1rem; left: 1rem;
+		top: 1em; left: 1rem;
 		font-size: 1rem;
 		font-family: "Solerin-Magica", sans-serif;
 
 		text-shadow: 0 0 10px var(--clr-white), 0 0 20px var(--clr-white), 0 0 30px var(--clr-blue-dark), 0 0 40px var(--clr-blue-dark), 0 0 50px var(--clr-blue-dark), 0 0 60px var(--clr-blue-dark), 0 0 70px var(--clr-blue-dark);
 		color:var(--clr-white);
+		border-bottom: 2px solid white;
 
-		a {
-			text-decoration: none;
-			border-bottom: 2px solid white;
-			padding: 0 5px;
-			width: 50px;
-		}
-
-		a:visited {
-			text-decoration: underline var(--clr-white);
-
-			text-shadow: 0 0 10px var(--clr-white), 0 0 20px var(--clr-white), 0 0 30px var(--clr-blue-dark), 0 0 40px var(--clr-blue-dark), 0 0 50px var(--clr-blue-dark), 0 0 60px var(--clr-blue-dark), 0 0 70px var(--clr-blue-dark);
-			color:var(--clr-white);
-		}
+		pointer-events: none;
 	}
 
 	/* logo GitHub */
 
 	#github-logo {
 		position: absolute;
-		top: 3.5rem; left: 25px;
-		width: 2rem; height: 2rem;
-		background-image: url(img/ghub.png);
-		background-size: contain;
+		top: 3.5rem; left: 1rem;
+		width: 2.5rem; height: 2.5rem;
+		font-size: 2.5em;
+		color: #7b7b7b;
+
+		&:hover {
+			color: #fff;
+		}
 	}
 
-	#bonjsoir {
-		font-size: 6rem;
-		font-family: "Magistros", sans-serif;
-		color: #fff;
-	}
+	#header-text {
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
 
-	#text-intro {
-		font-family: "Magistros", sans-serif;
-		text-align: center;
-		line-height: 2rem;
-		color: #fff;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		flex-wrap: wrap;
+
+		pointer-events: none;
+
+		#bonjsoir {
+			font-size: 6rem;
+			font-family: "Magistros", sans-serif;
+			color: #fff;
+		}
+
+		#text-intro {
+			font-family: "Magistros", sans-serif;
+			text-align: center;
+			line-height: 2rem;
+			color: #fff;
+		}
 	}
 }
+
+/* Color Tiles */
+
+#tile-eraser {
+	pointer-events: all;
+	cursor: pointer;
+}
+
+.color-tile {
+	width: 50px;
+	height: 50px;
+}
+
+
+
 
 /* Barre de nav */
 
@@ -100,16 +123,17 @@ nav {
 	position: fixed;
 	top: 3rem; right: 6rem;
 
+	pointer-events: none;
+
 	display: flex;
 	flex-direction: column;
 	align-items: center; justify-content: space-evenly;
 
 	width: 4rem; height: 10rem;
-	background-color: rgba(0, 0, 0, 0.3);
 	border-radius: 20px;
-	border: 2px solid white;
 
 	.nav-button {
+		pointer-events: all;
 		width: 20px; height: 20px;
 
 		display: block;
@@ -130,7 +154,7 @@ nav {
 #nav-caption {
 	position: absolute;
 	top: 1.5rem; right: 2.9rem;
-	background-color: #000;
+	pointer-events: none;
 	color: white;
 	font-size: 1.3rem;
 	font-family: "Magistros", sans-serif;
@@ -155,21 +179,19 @@ nav {
 
 
 	&__icones {
-		width: 100%;
-		height: 100px;
+		height: 85%;
 
 		display: flex;
+		flex-direction: column;
 		align-items: center; justify-content: space-around;
-		
-		margin: 5px 0;
 
 		& > div {
-			height: 70px; width: 70px;
+			min-height: 70px; min-width: 70px;
+			max-height: 70px; max-width: 70px;
 			border-radius: 50%;
 			box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.5);
 			border: inset 1px #010101;
 			background-color: #1d52a6;
-			margin: 1rem;
 			cursor: pointer;
 
 			&:active {
@@ -243,32 +265,39 @@ nav {
 /* Boite Mini Jeux + SCORES */
 
 #mini-jeux-desc {
+	position: relative;
 	width: 40%; height: 100%;
 	color: #aaa;
 
 	display: flex;
-	flex-direction: column;
-	align-items: center;
+	align-items: end;
 
 	border-radius: 10px;
 
 	h3 {
-		margin-bottom: 10px;
+		position: absolute;
+		top: 0; left: 70%;
+
 		font-family: "Magistros";
 		background-color: rgba(0, 0, 0, 0.5);
-		padding: 3px 5px;
 		border-radius: 10px;
 	}
 
 	#mini-jeux-score {
-		height: 100%;
+		height: 85%;
+		width: 100%;
 		display: flex;
 		flex-direction: column;
 		align-items: center; justify-content: space-around;
 		background-color: rgba(0, 0, 0, 0.5);
 		border-radius: 10px;
-		margin-top: 10px;
-		padding: 15px;
+		margin: 10px 0 0 2em;
+
+		.mini-jeu-score {
+			display: flex;
+			align-items: center;
+			height: 70px;
+		}
 	}
 }
 
@@ -287,8 +316,7 @@ nav {
 #shifumi-score {
 	width: 75%; height: 70px;
 
-	display: flex;
-	justify-content: space-around; align-items: center;
+	justify-content: space-around;
 
 	span {
 		text-align: center;
@@ -626,6 +654,10 @@ nav {
 	.color-input {
 		margin-left: 15px;
 
+		&::before {
+			font-family: "Magistros", sans-serif;
+		}
+
 		&:nth-child(1) {
 		 	&::before {
 				content: "R";
@@ -643,10 +675,12 @@ nav {
 		}
 
 		&::before {
+			font-family: "Magistros", sans-serif;
 			position: absolute;
 			left: 50%;
 			transform: translateX(-50%);
-			top: -25px;
+			top: -35px;
+			font-size: 1.5em;
 		}
 	}
 
@@ -656,11 +690,15 @@ nav {
 		transform: translateY(-50%);
 
 		font-size: 1.25rem;
-		background-color: #FFFFFF4D;
-		border-radius: 5px;
-
-		padding: 5px;
 	}
+}
+
+
+#rgb-score-value, #rgb-value {
+	color: #000;
+	background-color: #FFFFFF4D;
+	padding: 5px;
+	border-radius: 5px;
 }
 
 
@@ -678,7 +716,7 @@ nav {
 		justify-content: space-around;
 
 		height: 100%; min-width: 6%;
-		background-color: #1a1a1a;
+		background-color: #192b31;
 		color: #fff;
 
 		h3 {
@@ -697,18 +735,17 @@ nav {
 			border-top: 4px solid #fff; border-bottom: 4px solid #fff;
 			padding: 15px;
 
+			.canvas-toolbar-label {
+				border-top: 3px solid white;
+				padding-top: 10px;
+			}
+
 			#lineCap {
 				display: flex;
 				flex-direction: column;
 				margin-top: 10px;
 				padding: 10px 0;
 				border-top: 3px solid #fff;
-
-				.canvas-toolbar-label {
-						border-top: 3px solid white;
-						text-align:  center;
-						padding-top: 10px;
-				}
 			}
 
 			label, input {
@@ -742,11 +779,26 @@ nav {
 		position: absolute;
 		top: 0; right: 0; bottom: 0; left: 0;
 
+		display: flex;
+		align-items: center; justify-content: center;
+
 		cursor: pointer;
 		box-shadow: 0 0 5px 1px rgba(0, 0, 0, .8);
+
+		background-color: #1a1a1a;
 		background-size: cover;
 		background-position: center;
 		background-repeat: no-repeat;
+
+		#round-pen, #square-pen {
+			width: 25px; height: 25px;
+		}
+		#round-pen {
+			border-radius: 50%;
+		}
+		.pen-class {
+			background-color: #192b31;
+		}
 	}
 
 	input {
@@ -754,7 +806,12 @@ nav {
 		width: 0; height: 0;
 
 		&:checked + span {
-			box-shadow: inset 0 0 8px 0 rgba(0, 0, 0, .8);
+			box-shadow: inset 0 0 8px 1px rgba(0, 0, 0, .8);
+			background-color: #6c6c6c;
+
+			.pen-class {
+				background-color: #fff;
+			}
 		}
 	}
 }
@@ -762,6 +819,7 @@ nav {
 #canvas-gomme-display {
 	background-image: url(img/gomme.png);
 	background-size: 40px;
+	transform: rotate(180deg);
 }
 
 #line-width {
