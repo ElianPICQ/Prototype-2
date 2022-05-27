@@ -53,7 +53,7 @@ function  setCookie(cname, cvalue, expdays)
 
   d.setTime(d.getTime() + (expdays*24*60*60*1000));
   expires = "expires=" + d.toUTCString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";SameSite=Lax";
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/;SameSite=Lax";
   console.log(expires);
 }
 
