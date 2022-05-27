@@ -37,6 +37,87 @@ function  getRandomInt(max) {
 
 
 /******************************/
+/* Fonctions pour les Cookies */
+/******************************/
+
+function  delCookie(cname)
+{
+
+}
+
+function  setCookie(cname, cvalue, expdays)
+{
+  console.log("set Cookie");
+  let d = new Date();
+  let expires;
+
+  d.setTime(d.getTime() + (expdays*24*60*60*1000));
+  expires = "expires=" + d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";SameSite=Lax";
+  console.log(expires);
+}
+
+function  getCookie(cname)
+{
+  console.log("Get Cookie");
+  let cookie = cname + "=";
+  let allCookies = document.cookie.split(';');
+  console.log(allCookies);
+
+  for (let i = 0; i < allCookies.length; i++)
+  {
+    let c = allCookies[i];
+    while (c.charAt(0) == ' ')
+      c = c.substring(1);
+    if (c.indexOf(cookie) == 0)
+    {
+      return (c.substring(cookie.length, c.length));
+    }
+  }
+  console.log("get 0");
+  return 0;
+}
+/*
+function  checkCookie(cname) {
+  let cookieV = getCookie(cname);
+
+  if (!cookieV)
+  {
+
+  }
+}
+*/
+/* Creation / Changement de Pseudo */
+
+const pseudo = document.getElementById("set-pseudo__input");
+const pseudoDisplay = document.getElementsByClassName("pseudo-display");
+
+function  updateUsrName(username)
+{
+  console.log("updt username");
+  Array.prototype.forEach.call(pseudoDisplay, function(pseudo) {
+    pseudo.innerHTML = username;
+  });
+}
+
+pseudo.addEventListener("change", function() {
+  console.log("addEventListener");
+  setCookie("username", pseudo.value, 2);
+
+  updateUsrName(getCookie("username"));
+});
+
+
+/* Charger le pseudo au chargement */
+window.addEventListener("load", function() {
+  let username = getCookie("username");
+
+  if (username != 0)
+    updateUsrName(username);
+});
+
+
+/******************************/
 /*  SCROLL (la bordure tmtc)  */
 /******************************/
 
