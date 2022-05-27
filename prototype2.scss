@@ -43,7 +43,7 @@ header {
 
 	display: flex;
 	flex-wrap: wrap;
-	align-content: center;	justify-content: center;
+	justify-content: center;
 
 	background-color: #000;
 
@@ -109,6 +109,26 @@ header {
 	left: 1rem;
 	top: 7.5rem;
 	color: #fff;
+
+	input {
+		position: absolute;
+		height: 1.5em; width: 11em;
+		background-color: transparent;
+		border: none;
+		color: #fff;
+
+		&:focus + span {
+			opacity: 0;
+		}
+	}
+	span {
+		position: absolute;
+		height: 1.5em; width: 11em;
+		opacity: 1;
+		font-family: "Solerin-Magica", sans-serif;
+		background-color: transparent;
+		pointer-events: none;
+	}
 }
 
 

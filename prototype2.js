@@ -37,6 +37,7 @@ function  getRandomInt(max) {
 
 
 /******************************/
+/*        Définitions         */
 /* Fonctions pour les Cookies */
 /******************************/
 
@@ -47,22 +48,18 @@ function  delCookie(cname)
 
 function  setCookie(cname, cvalue, expdays)
 {
-  console.log("set Cookie");
   let d = new Date();
   let expires;
 
   d.setTime(d.getTime() + (expdays*24*60*60*1000));
   expires = "expires=" + d.toUTCString();
   document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/;SameSite=Lax";
-  console.log(expires);
 }
 
 function  getCookie(cname)
 {
-  console.log("Get Cookie");
   let cookie = cname + "=";
   let allCookies = document.cookie.split(';');
-  console.log(allCookies);
 
   for (let i = 0; i < allCookies.length; i++)
   {
@@ -74,7 +71,6 @@ function  getCookie(cname)
       return (c.substring(cookie.length, c.length));
     }
   }
-  console.log("get 0");
   return 0;
 }
 /*
@@ -87,24 +83,35 @@ function  checkCookie(cname) {
   }
 }
 */
+
+
+/***********************************/
 /* Creation / Changement de Pseudo */
+/***********************************/
 
 const pseudo = document.getElementById("set-pseudo__input");
 const pseudoDisplay = document.getElementsByClassName("pseudo-display");
 
 function  updateUsrName(username)
 {
-  console.log("updt username");
   Array.prototype.forEach.call(pseudoDisplay, function(pseudo) {
     pseudo.innerHTML = username;
   });
 }
 
+function  initEmptyPseudo()
+{
+  Array.prototype.forEach.call(pseudoDisplay, function(pseudo) {
+    pseudo.innerHTML = "Pseudo ?";
+  });
+}
+
 pseudo.addEventListener("change", function() {
-  console.log("addEventListener");
-  setCookie("username", pseudo.value, 2);
+  setCookie("username", pseudo.value, 365);
 
   updateUsrName(getCookie("username"));
+  pseudo.blur();
+  pseudo.value = "";
 });
 
 
@@ -112,8 +119,15 @@ pseudo.addEventListener("change", function() {
 window.addEventListener("load", function() {
   let username = getCookie("username");
 
-  if (username != 0)
-    updateUsrName(username);
+  console.log("1");
+  if (!username)
+  {
+    initEmptyPseudo();
+    return;
+  }
+  console.log("3");
+  
+  updateUsrName(username);
 });
 
 
@@ -384,7 +398,7 @@ const observer = new IntersectionObserver((entries) => {
     }
   })
 }, {
-  rootMargin: "0px 0px 200% 0px"
+  rootMargin: "0px 0px 300% 0px"
 });
 
 

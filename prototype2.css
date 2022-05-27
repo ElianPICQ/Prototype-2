@@ -39,7 +39,6 @@ header {
   overflow: hidden;
   display: flex;
   flex-wrap: wrap;
-  align-content: center;
   justify-content: center;
   background-color: #000;
   /* logo GitHub */
@@ -96,6 +95,26 @@ header #header-text #text-intro {
   left: 1rem;
   top: 7.5rem;
   color: #fff;
+}
+#set-pseudo input {
+  position: absolute;
+  height: 1.5em;
+  width: 11em;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+}
+#set-pseudo input:focus + span {
+  opacity: 0;
+}
+#set-pseudo span {
+  position: absolute;
+  height: 1.5em;
+  width: 11em;
+  opacity: 1;
+  font-family: "Solerin-Magica", sans-serif;
+  background-color: transparent;
+  pointer-events: none;
 }
 
 /* Color Tiles */
